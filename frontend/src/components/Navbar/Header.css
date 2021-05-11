@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+.navbar {
+  background-color: #001457 !important;
+}
+.link {
+  margin-top: 10px;
+  font-size: large;
+  font-weight: 600;
+  display: inline;
+  float: right;
+}
+
+@media (min-width: 992px) {
+  .link {
+    margin-left: 2em;
+    margin-right: 6em;
+  }
+  .ml-1 {
+    margin-left: 19em;
+  }
+  .app-name {
+    font-weight: 500;
+    font-size: xx-large;
+    font-family: 'Dancing Script';
+    margin-left: 3em;
+  }
+  .about-us,
+  .contact {
+    margin-left: 1em;
+  }
+}
