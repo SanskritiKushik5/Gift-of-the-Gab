@@ -1,0 +1,61 @@
+.recorder{
+    margin: auto;
+    text-align: center;
+}
+#audio{
+    margin-top: 20px;
+    clear: both;
+    width: 1000px;
+    color: #b2ecfd;
+}
+#record{
+    background-color: #b2ecfd;
+    color: black;
+    border: none;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#record:hover{
+    background-color: #095a9d;
+    color: #ffffff;
+}
+
+#pause {
+    background-color: #b2ecfd;
+    color: black;
+    border: none;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#pause:hover {
+    background-color: #095a9d;
+    color: #ffffff;
+}
+
+#stop {
+    background-color: #b2ecfd;
+    color: black;
+    border: none;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+#stop:hover {
+    background-color: #095a9d;
+    color: #ffffff;
+}
+
+.rec{
+    color: #b2ecfd;
+}

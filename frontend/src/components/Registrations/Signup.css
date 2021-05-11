@@ -1,0 +1,38 @@
+.form-title {
+    text-align: center;
+    margin-top: -3rem;
+    font-family: "Abel", sans-serif;
+    background-color: #001457;
+    color: white;
+    font-size: xx-large;
+    width: 12rem;
+}
+
+.bg {
+    background-image: linear-gradient(#00c4cc, #7c2ae8);
+    top: 0;
+    /*height: 100vh !important;*/
+    /*width: 100vw;*/
+}
+
+.submitbtn {
+    margin-top: 3px;
+    border-radius: 50rem;
+    background-color: #001457;
+    text-align: center;
+}
+
+.form-box {
+    width: 30rem;
+    background-color: #ffffff;
+    margin-bottom: 2rem; padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 30%), 0 6px 20px 0 rgb(0 0 0 / 30%);
+}
+
+.text-signup{
+    margin-top: 10px;
+}
+
+.link-signup{
+    font-size: 12px;
+}

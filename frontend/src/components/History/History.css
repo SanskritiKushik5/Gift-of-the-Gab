@@ -1,0 +1,40 @@
+.count-left {
+  display: inline;
+  float: left;
+  text-align: center;
+}
+
+.count-right {
+  display: inline;
+  float: right;
+  text-align: center;
+}
+
+.head-bg {
+  background-color: #b2ecfd;
+  color: #000;
+  opacity: 0.7;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+  padding-top: 20px;
+}
+
+h1 {
+  color: #000;
+}
+
+h3 {
+  color: #095a9d;
+}
+
+.btn {
+  background-color: #095a9d;
+  color: #fff;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #b2ecfd;
+  color: #000;
+  border: none;
+}
