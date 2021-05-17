@@ -21,8 +21,8 @@ class RegisterAPIView(APIView):
                 "user": serializer.data,
             }
             return Response(response_data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class LogOutAPIView(APIView):

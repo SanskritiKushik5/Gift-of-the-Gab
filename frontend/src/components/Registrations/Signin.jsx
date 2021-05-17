@@ -1,10 +1,24 @@
-import React from 'react'
+import {React, useState} from 'react'
 import {Nav} from 'react-bootstrap';
 import {Button, Form, Container} from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import "./Signup.css";
+import axios from 'axios';
 
 const Signin = () => {
+    const [post, setPost] = useState({
+		username:'',
+        password:''
+	});
+
+	const onInputChange = e => {
+		setPost({...post,[e.target.name]: e.target.value})
+	}
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		await axios.post('http://127.0.0.1:8000/api/login/', post);
+	}
+
     return (<>
         <Container fluid className="container-fluid bg">
             <br/>
@@ -13,16 +27,16 @@ const Signin = () => {
         <Container className="form-box flex">
             <p className="form-title">Sign In</p>
                 <Container fluid="md">
-                    <Form>
+                    <Form onSubmit={e => onSubmit(e)}>
 
-                        <Form.Group controlId="formBasicUserName">
+                        <Form.Group controlId="username">
                             <Form.Label>Username</Form.Label>
-                            <Form.Control type="username" placeholder="Username" />
+                            <Form.Control onChange={e => onInputChange(e)} value={post.username} name="username" type="username" placeholder="Username" />
                         </Form.Group>
 
-                        <Form.Group controlId="formBasicPassword">
+                        <Form.Group controlId="password">
                             <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control onChange={e => onInputChange(e)} value={post.password} name="password" type="password" placeholder="Password" />
                         </Form.Group>
                     
                         <Form.Group controlId="formBasicCheckbox">
