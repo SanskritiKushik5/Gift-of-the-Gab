@@ -2,10 +2,14 @@ import {React, useState} from 'react'
 import {Nav} from 'react-bootstrap';
 import {Button, Form, Container} from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
+import { useHistory } from "react-router-dom";
 import "./Signup.css";
 import axios from 'axios';
 
 const Signin = () => {
+
+    let history = useHistory();
+
     const [post, setPost] = useState({
 		username:'',
         password:''
@@ -17,6 +21,11 @@ const Signin = () => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		await axios.post('http://127.0.0.1:8000/api/login/', post);
+        setPost({
+            username:'',
+            password:''
+        })
+        history.push("/");
 	}
 
     return (<>

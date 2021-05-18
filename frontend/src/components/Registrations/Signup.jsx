@@ -1,30 +1,63 @@
 import {React, useState} from 'react'
 import {Nav} from 'react-bootstrap';
-import {Button, Form, Container} from 'react-bootstrap';
+import {Button, Form, Container, Modal} from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
+import { useHistory } from "react-router-dom";
 import "./Signup.css";
 import axios from 'axios';
 
 const Signup = () => {
+
+    let history = useHistory();
+
+    const [show, setShow] = useState(false);
+
 	const [post, setPost] = useState({
 		username:'',
+        email:'',
+        first_name:'',
+        last_name:'',
+        date_of_birth:'',
+        password:'',
+        password2:''
+	});
+
+	const onInputChange = e => {
+		setPost({...post,[e.target.name]: e.target.value})
+	}
+
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		await axios.post('http://127.0.0.1:8000/api/register/', post);
+        setPost({
+            username:'',
             email:'',
             first_name:'',
             last_name:'',
             date_of_birth:'',
             password:'',
             password2:''
-	});
-	/*const { username, email, first_name, last_name, date_of_birth, password, password2 } = post;*/
-	const onInputChange = e => {
-		setPost({...post,[e.target.name]: e.target.value})
-	}
-	const onSubmit = async (e) => {
-		e.preventDefault();
-		await axios.post('http://127.0.0.1:8000/api/register/', post);
-	}
+        })
+        setShow(true);
+    }
+
+    const handleClose = () => setShow(false);
+    const redirect = () => history.push("/signin");
 
         return (<>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Body>Sign Up is successful<br></br>Please Sign in to access the features</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={redirect}>
+                            Sign in
+                        </Button>
+                    </Modal.Footer>
+            </Modal>
+
             <Container fluid className="container-fluid bg">
                 <br/>
                 <br/>
