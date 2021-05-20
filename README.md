@@ -16,11 +16,11 @@
     -> python manage.py runserver <br>
     Then follow the link in the command prompt for backend
   </li>
-  <li>Now open a new command prompt for frontend in the <bold>frontend</bold> folder</li>
+  <li>Now open a new command prompt for frontend in the frontend folder</li>
   <li>
     Run the following command to start the react server <br>
     -> npm start
     Then follow the link in the command prompt
-  <li>
+  </li>
   <li>Now, you are ready to contribute!</li>
 </ol>
