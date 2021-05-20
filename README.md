@@ -19,7 +19,7 @@
   <li>Now open a new command prompt for frontend in the frontend folder</li>
   <li>
     Run the following command to start the react server <br>
-    -> npm start
+    -> npm start <br>
     Then follow the link in the command prompt
   </li>
   <li>Now, you are ready to contribute!</li>
