@@ -20,9 +20,7 @@ class CardAPIView(APIView):
 
     def get(self, request, format=None):
         serializer = self.serializer_class(self.get_object())
-        print(serializer)
         serialized_data = serializer.data
-        print(serialized_data)
         return Response(serialized_data, status=status.HTTP_200_OK)
 
 class HistoryAPIView(APIView):

@@ -2,7 +2,7 @@ from django.db import models
 from accounts.models import Customer
 
 class Card(models.Model):
-    exercise_name = models.CharField(max_length=100)
+    exercise_name = models.CharField(max_length=500)
     thumbnail = models.ImageField()
     description = models.TextField()
     instructions = models.TextField()
