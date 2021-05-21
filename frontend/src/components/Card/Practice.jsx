@@ -10,10 +10,9 @@ const Practice=({cards})  => {
         <div className='row'>
           <div className="col-10 mx-auto">
             <div className='row gy-4'>
-              {cards.map((card)=>
-              // <Card card={card}/>
-              <h1>{card.id}</h1>
-              )}  
+              {cards.map((card)=>(
+                <Card card={card}/>
+              ))}
             </div>
           </div>
         </div>

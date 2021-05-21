@@ -10,16 +10,23 @@ class CardAPIView(APIView):
     serializer_class = CardSerializer
     # permission_classes = [IsAuthenticated, IsOwner]
 
-    def get_object(self):
-        try:
-            obj = Card.objects.get()
-            self.check_object_permissions(self.request, obj)
-            return obj
-        except Card.DoesNotExist:
-            raise Http404
+    # def get_object(self):
+    #     try:
+    #         obj = Card.objects.get()
+    #         self.check_object_permissions(self.request, obj)
+    #         return obj
+    #     except Card.DoesNotExist:
+    #         raise Http404
 
+    # def get(self, request, format=None):
+    #     serializer = self.serializer_class(self.get_object(), many=True)
+    #     serialized_data = serializer.data
+    #     return Response(serialized_data, status=status.HTTP_200_OK)
+    
     def get(self, request, format=None):
-        serializer = self.serializer_class(self.get_object())
+        data = Card.objects.all()
+
+        serializer = self.serializer_class(data, many=True)
         serialized_data = serializer.data
         return Response(serialized_data, status=status.HTTP_200_OK)
 
