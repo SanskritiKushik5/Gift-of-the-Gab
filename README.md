@@ -2,7 +2,7 @@
 ### Contribution Guidelines
 <ol>
   <li>Clone the repository</li>
-  <li>Create a <a href="https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/">virtual environment</a></li>
+  <li>Create a <a href="https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/">virtual environment</a></li>
   <li>
     After activating the environment <br>
     Run the following command to install the packages <br>
@@ -19,7 +19,7 @@
   <li>Now open a new command prompt for frontend in the frontend folder</li>
   <li>
     Run the following command to start the react server <br>
-    -> npm start <br>
+    -> npm start
     Then follow the link in the command prompt
   </li>
   <li>Now, you are ready to contribute!</li>
