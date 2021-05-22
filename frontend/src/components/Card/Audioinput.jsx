@@ -1,16 +1,19 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import audio from '../Audio/1.mp3';
 import Slider from './Slider'
 import ControlPanel from '../Controls/ControlPanel'
 import {Col, Row, Card} from 'react-bootstrap';
 import img from '../Images/sample.jpg';
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function Audioinput() {
   const [percentage, setPercentage] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
-
+  const [card, setCard] = useState({});
+  const { id } = useParams();
   const audioRef = useRef()
 
   const onChange = (e) => {
@@ -41,7 +44,13 @@ function Audioinput() {
     setPercentage(+percent)
     setCurrentTime(time.toFixed(2))
   }
-
+  useEffect(() => {
+    loadCard();
+  }, []);
+  const loadCard = async () => {
+    const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
+    setCard(result.data);
+  }
   return (
     <div className='app-container'>
     <br></br>
@@ -53,10 +62,10 @@ function Audioinput() {
             <Col>
                 <Card.Body>
                 <br></br>
-                    <Card.Title>Pronounciation Exercise 3</Card.Title>
+                    <Card.Title>{card.exercise_name}</Card.Title>
                     <Card.Text>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis.</p>
-                        <small>Instructions: <br></br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sapien facilisis, lacinia purus vel, varius magna. Maecenas non leo quam. Vivamus et nunc sagittis, convallis enim a, venenatis dui. Morbi sit amet diam felis. Aliquam erat volutpat. Aenean velit odio, rhoncus eget est quis, egestas tempus nunc.</small>
+                        <p>{card.description}</p>
+                        <small>Instructions: <br></br>{card.instructions}</small>
                         </Card.Text>
                 </Card.Body>
             </Col>
