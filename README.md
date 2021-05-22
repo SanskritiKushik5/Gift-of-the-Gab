@@ -3,7 +3,7 @@
 
 1. Go to the [project repo](https://github.com/SanskritiKushik5/Gift-of-the-Gab) and fork it by clicking "Fork" ( or Download the Zip file directly and start from the step 3 )<br>
 2. Open terminal / command prompt and Clone the project using <br> `git clone https://github.com/YOUR_USERNAME/Gift-of-the-Gab.git`
-3. Create a python3 virtual environment: (Python version used is 3.9 range)
+3. Create a python3 virtual environment: (Python version used is 3.9)
 
     ```
     $ python3 -m venv venv
