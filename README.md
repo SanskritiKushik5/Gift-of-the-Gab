@@ -60,6 +60,7 @@
     #### Run the application - backend
 
     ```
+    $ cd backend
     $ python manage.py runserver
     ```
 4. 
