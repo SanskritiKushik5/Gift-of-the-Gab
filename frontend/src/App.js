@@ -13,7 +13,7 @@ function App() {
   }, []);
   const loadCards = async () => {
     const result = await axios.get("http://127.0.0.1:8000/api/card/");
-    console.log(result.data);
+    console.log(result.data)
     setCards(result.data);
   }
   return (
@@ -26,7 +26,7 @@ function App() {
             <br />
             <Review />
             <br />
-            <Practice cards={cards} />
+            <Practice cards={cards}/>
             <Footer />
           </Route>
           <Route exact path="/contact">
@@ -36,10 +36,10 @@ function App() {
           </Route>
           <Route exact path="/exercise">
             <Header />
-            <Practice cards={cards}/>
+            <Practice/>
             <Footer />
           </Route>
-          <Route exact path="/audioinput">
+          <Route exact path="/audioinput/:id">
             <Header />
             <Audioinput />
             <Mic />

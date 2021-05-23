@@ -14,7 +14,7 @@ const Card=({card})  => {
                 <h5 class="card-title ">{card.exercise_name}</h5>
                 <hr></hr>
                 <p class="card-text">{card.description}</p>
-                <LinkContainer to="/audioinput">
+                <LinkContainer to={`audioinput/${card.id}`}>
                     <Nav.Link className="rd_activity"><Button variant="primary" className="b_activity">Start Practice</Button></Nav.Link>
                 </LinkContainer>
               </div>
