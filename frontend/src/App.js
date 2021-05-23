@@ -26,7 +26,7 @@ function App() {
             <br />
             <Review />
             <br />
-            <Practice />
+            <Practice cards={cards} />
             <Footer />
           </Route>
           <Route exact path="/contact">
