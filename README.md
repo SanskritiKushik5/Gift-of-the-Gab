@@ -35,13 +35,14 @@
 6. Now run the following command to start the django server:
 
     #### Run the application - backend
+    ```
+    $ cd backend
+    ```
 
     ```
     $ python manage.py runserver
     ```
-    ```
-    $ cd backend
-    ```
+
     Then follow this [link](http://127.0.0.1:8000/)
 7. Now open a terminal / command prompt for frontend in the frontend folder
 8. Run the command to install the dependencies
