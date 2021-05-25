@@ -9,7 +9,7 @@ const Card=({card})  => {
     return(<>
           <div className="col-md-4 col-10 mx-auto">
             <div class="card" >
-              <img src="{{ card.thumbnail.url }}" class="card-img-top" alt="..."/>
+              <img src={`http://127.0.0.1:8000${card.thumbnail}`} class="card-img-top" alt="..."/>
               <div class="card-body">
                 <h5 class="card-title ">{card.exercise_name}</h5>
                 <hr></hr>
