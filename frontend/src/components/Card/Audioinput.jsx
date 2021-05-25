@@ -54,17 +54,19 @@ function Audioinput() {
     <br></br>
     <div className='col-10'>
       <Row className='no-gutters'>
-            <Col md={5} lg={5}  >
-                <Card.Img src={`http://127.0.0.1:8000${card.thumbnail}`}/>
+            <Col md={4} lg={4}  >
+                <Card.Img className='exe-img' src={`http://127.0.0.1:8000${card.thumbnail}`}/>
             </Col>
             <Col>
                 <Card.Body>
                 <br></br>
                     <Card.Title>{card.exercise_name}</Card.Title>
                     <Card.Text>
-                        <p>{card.description}</p>
-                        <small>Instructions: <br></br>{card.instructions}</small>
-                        </Card.Text>
+                    <pre>
+                        <p className="flex-container">{card.description}</p>
+                        <small className="flex-container">Instructions: <br></br>{card.instructions}</small>
+                    </pre>
+                    </Card.Text>
                 </Card.Body>
             </Col>
         </Row>
