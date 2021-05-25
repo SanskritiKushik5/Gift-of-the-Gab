@@ -36,7 +36,7 @@ function App() {
           </Route>
           <Route exact path="/exercise">
             <Header />
-            <Practice/>
+            <Practice cards={cards}/>
             <Footer />
           </Route>
           <Route exact path="/audioinput/:id">
