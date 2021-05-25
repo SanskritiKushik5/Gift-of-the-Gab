@@ -1,9 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
-import audio from '../Audio/1.mp3';
 import Slider from './Slider'
 import ControlPanel from '../Controls/ControlPanel'
 import {Col, Row, Card} from 'react-bootstrap';
-import img from '../Images/sample.jpg';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -57,7 +55,7 @@ function Audioinput() {
     <div className='col-10'>
       <Row className='no-gutters'>
             <Col md={5} lg={5}  >
-                <Card.Img src={img} />
+                <Card.Img src={`http://127.0.0.1:8000${card.thumbnail}`}/>
             </Col>
             <Col>
                 <Card.Body>
@@ -78,7 +76,7 @@ function Audioinput() {
         onLoadedData={(e) => {
           setDuration(e.currentTarget.duration.toFixed(2))
         }}
-        src={audio}
+        src={`http://127.0.0.1:8000${card.audio}`}
       ></audio>
       <ControlPanel
         play={play}
