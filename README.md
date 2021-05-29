@@ -2,7 +2,7 @@
 ### Contribution Guidelines
 
 1. Download and install [Docker](https://www.docker.com/products/docker-desktop)
-2. Open a terminal in the cloned repository and run the following commands:
+2. Open a terminal in the cloned repository and run the following commands:<br>
     ```
     docker-compose build
     ```
