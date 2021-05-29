@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:14
 RUN mkdir /frontend
 WORKDIR /frontend
 ADD . /frontend/
