@@ -23,7 +23,7 @@ const Header = () => {
                             <Nav.Link className="link contact">Contact</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/signup">
-                            <Nav.Link><Button variant="primary ml-1" >Sign In</Button></Nav.Link>
+                            <Nav.Link><Button variant="primary ml-1" >Sign Up</Button></Nav.Link>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
