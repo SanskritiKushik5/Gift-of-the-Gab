@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Mic, Signup, Signin, Footer} from './components';
+import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Mic, Signup, Signin, Footer, ScrollToTop} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from "axios";
 
@@ -18,6 +18,7 @@ function App() {
   }
   return (
     <Router>
+     <ScrollToTop>
       <div className="app">
         <Switch>
           <Route exact path="/">
@@ -62,6 +63,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+     </ScrollToTop>
     </Router>
   );
 }
