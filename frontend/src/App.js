@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Mic, Signup, Signin, Footer, ScrollToTop} from './components';
+import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from "axios";
 
@@ -43,7 +43,6 @@ function App() {
           <Route exact path="/audioinput/:id">
             <Header />
             <Audioinput />
-            <Mic />
             <Footer />
           </Route>
           <Route exact path="/history">

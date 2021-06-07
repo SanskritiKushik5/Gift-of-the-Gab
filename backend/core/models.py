@@ -14,7 +14,7 @@ class Card(models.Model):
 
 class History(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    date_time = models.DateTimeField(auto_now=False, auto_now_add=False)
+    date_time = models.DateTimeField(auto_now_add=True)
     exercise_name = models.CharField(max_length=100)
     thumbnail = models.ImageField(upload_to="card/images", default="")
     description = models.TextField()
