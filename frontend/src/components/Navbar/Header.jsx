@@ -3,9 +3,12 @@ import Button from 'react-bootstrap/Button';
 import "./Header.css"
 import { LinkContainer } from "react-router-bootstrap";
 
+import CheckAuth from '../CheckAuth/CheckAuth'
+
 const Header = () => {
     return (
         <>
+        <CheckAuth />
             <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
                 <LinkContainer to="/">
                     <Navbar.Brand className="ml-xs-2 app-name">Gift of the Gab</Navbar.Brand>
@@ -22,8 +25,11 @@ const Header = () => {
                         <LinkContainer to="/contact">
                             <Nav.Link className="link contact">Contact</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer to="/signin">
+                            <Nav.Link><Button variant="primary ml-1" >Sign In</Button></Nav.Link>
+                        </LinkContainer>
                         <LinkContainer to="/signup">
-                            <Nav.Link><Button variant="primary ml-1" >Sign Up</Button></Nav.Link>
+                            <Nav.Link><Button variant="primary ml-2" >Sign Up</Button></Nav.Link>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>

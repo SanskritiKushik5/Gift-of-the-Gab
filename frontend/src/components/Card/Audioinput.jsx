@@ -1,8 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
 import Slider from './Slider'
 import ControlPanel from '../Controls/ControlPanel'
-import {Col, Row, Card} from 'react-bootstrap';
+import Mic from './Mic'
+import {Col, Row, Card, Button} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 function Audioinput() {
@@ -49,21 +51,41 @@ function Audioinput() {
     const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
     setCard(result.data);
   }
+  
+  // const exercise_name = document.getElementById("cardTitle");
+  // const description = document.getElementById("cardDesc");
+  // const thumbnail = document.getElementById("cardImg");
+  
+  // const [post, setPost] = useState({
+	// 	exercise_name: exercise_name,
+  //   description: description,
+  //   thumbnail: thumbnail
+	// });
+
+	// const onClick = async (e) => {
+	// 	await axios.post('http://127.0.0.1:8000/api/history/', post);
+  //   setPost({
+  //     exercise_name: exercise_name,
+  //     description: description,
+  //     thumbnail: thumbnail     
+  //   })
+	// }
+
   return (
     <div className='app-container'>
     <br></br>
     <div className='col-10'>
       <Row className='no-gutters'>
             <Col md={4} lg={4}  >
-                <Card.Img className='exe-img' src={`http://127.0.0.1:8000${card.thumbnail}`}/>
+                <Card.Img className='exe-img' id="cardImg" src={`http://127.0.0.1:8000${card.thumbnail}`}/>
             </Col>
             <Col>
                 <Card.Body>
                 <br></br>
-                    <Card.Title>{card.exercise_name}</Card.Title>
+                    <Card.Title id="cardTitle">{card.exercise_name}</Card.Title>
                     <Card.Text>
                     <pre>
-                        <p className="flex-container">{card.description}</p>
+                        <p className="flex-container" id="cardDesc">{card.description}</p>
                         <small className="flex-container">Instructions: <br></br>{card.instructions}</small>
                     </pre>
                     </Card.Text>
@@ -91,6 +113,10 @@ function Audioinput() {
         <h3 align="center">- Start Recording -</h3>
         <p align="center">Follow the instructions and attempt the exercise by starting the recorder...</p>
       </div>
+      <Mic />
+      <center>
+      <Button variant="primary" className="btn x">Submit Recording</Button>
+      </center>
     </div>
   )
 }
