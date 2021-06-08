@@ -1,16 +1,9 @@
 import {React, useState, useEffect} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-<<<<<<< HEAD
-import { Header, Welcome, Contact, Review, History,Dashboard, Practice, Audioinput, Mic, Signup, Signin, Footer} from './components';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import dashboard from './components/dash/Dashboard';
-
-=======
-import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop} from './components';
+import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop,Dashboard} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from "axios";
->>>>>>> upstream/main
 
 function App() {
   const [cards, setCards] = useState([]);
