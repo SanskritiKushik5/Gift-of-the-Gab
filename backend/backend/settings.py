@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "accounts.apps.AccountsConfig",
     "rest_framework_simplejwt.token_blacklist",
+<<<<<<< HEAD
+    "corsheaders",
+=======
+>>>>>>> upstream/main
     "core.apps.CoreConfig",
 ]
 
@@ -59,8 +63,11 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
 
+<<<<<<< HEAD
+=======
 CORS_ALLOW_CREDENTIALS = True
 
+>>>>>>> upstream/main
 ROOT_URLCONF = "backend.urls"
 
 TEMPLATES = [
