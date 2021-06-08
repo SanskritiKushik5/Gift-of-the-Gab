@@ -1,74 +1,128 @@
-import React from 'react'
+import {React, useState} from 'react'
 import {Nav} from 'react-bootstrap';
-import {Button, Form, Container} from 'react-bootstrap';
+import {Button, Form, Container, Modal} from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import "./Signup.css";
+import axios from 'axios';
 
 const Signup = () => {
-    return (<>
-        <Container fluid className="container-fluid bg">
-            <br/>
-            <br/>
-            <br/>
-        <Container className="form-box flex">
-            <p className="form-title">Sign Up</p>
-                <Container fluid="md">
-                    <Form>
-                        <Form.Group controlId="formBasicName">
-                            <Form.Label>First Name</Form.Label>
-                            <Form.Control type="name" placeholder="First Name" />
-                        </Form.Group>
 
-                        <Form.Group controlId="formBasicName">
-                            <Form.Label>Last Name</Form.Label>
-                            <Form.Control type="name" placeholder="Last Name" />
-                        </Form.Group>
+    const [show, setShow] = useState(false);
 
-                        <Form.Group controlId="formBasicDOB">
-                            <Form.Label>Date Of Birth</Form.Label>
-                            <Form.Control type="dateofbirth" placeholder="Date of Birth" />
-                        </Form.Group>
+	const [post, setPost] = useState({
+		username:'',
+            email:'',
+            first_name:'',
+            last_name:'',
+            date_of_birth:'',
+            password:'',
+            password2:''
+	});
 
-                        <Form.Group controlId="formBasicUserName">
-                            <Form.Label>Username</Form.Label>
-                            <Form.Control type="username" placeholder="Username" />
-                        </Form.Group>
+	const onInputChange = e => {
+		setPost({...post,[e.target.name]: e.target.value})
+	}
 
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		await axios.post('http://127.0.0.1:8000/api/register/', post);
+        setPost({
+            username:'',
+            email:'',
+            first_name:'',
+            last_name:'',
+            date_of_birth:'',
+            password:'',
+            password2:''
+        })
+        setShow(true);
+    }
+
+    const handleClose = () => setShow(false);
+
+        return (<>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Body>Sign Up is successful<br></br>Please Sign in to access the features</Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                            Sign in
+                        </Button>
+                    </Modal.Footer>
+            </Modal>
+
+            <Container fluid className="container-fluid bg">
+                <br/>
+                <br/>
+                <br/>
+            <Container className="form-box flex">
+                <p className="form-title">Sign Up</p>
+                    <Container fluid="md">
+                        <Form onSubmit={e => onSubmit(e)}>
+                            <Form.Group controlId="username">
+                                <Form.Label>Username</Form.Label>
+                                <Form.Control onChange={e => onInputChange(e)} value={post.username} name="username" type="username" placeholder="Username" />
+                            </Form.Group>
+
+                            <Form.Group controlId="email">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control onChange={e => onInputChange(e)} value={post.email} name="email" type="email" placeholder="Enter email" />
+                                <Form.Text className="text-muted">
+                                    We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
+
+                            <Form.Group controlId="first_name">
+                                <Form.Label>First Name</Form.Label>
+                                <Form.Control onChange={e => onInputChange(e)} value={post.first_name} name="first_name" type="fname" placeholder="First Name" />
+                            </Form.Group>
+
+                            <Form.Group controlId="last_name">
+                                <Form.Label>Last Name</Form.Label>
+                                <Form.Control onChange={e => onInputChange(e)} value={post.last_name} name="last_name" type="lname" placeholder="Last Name" />
+                            </Form.Group>
+
+                            <Form.Group controlId="date_of_birth">
+                                <Form.Label>Date Of Birth</Form.Label>
+                                <Form.Control onChange={e => onInputChange(e)} value={post.date_of_birth} name="date_of_birth" type="date" placeholder="Date of Birth" />
+                            </Form.Group>
+
+                            <Form.Group controlId="password">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control onChange={e => onInputChange(e)} value={post.password} name="password" type="password" placeholder="Password" />
+                            </Form.Group>
+                            <Form.Group controlId="password2">
+                                <Form.Label>Enter the password again</Form.Label>
+                                <Form.Control onChange={e => onInputChange(e)} value={post.password2} name="password2" type="password" placeholder="Confirm your password" />
+                            </Form.Group>
+                        
+                            <Form.Group controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Always remember me" />
+                            </Form.Group>
+
+                            <center> 
+                                <Button className="submitbtn" type="submit">Submit</Button>
+                            </center>
+
+                            </Form>
+
+                            <Form.Group controlId="formBasicSignin">
+                                <Form.Text className="signin">
+                                    <center><p className="text-signup">Already have an account?</p></center>
+                                    <LinkContainer to="/signin">
+                                        <Nav.Link className="link-signup"><center>Sign In</center></Nav.Link>
+                                    </LinkContainer>
                             </Form.Text>
                         </Form.Group>
-
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
-                        </Form.Group>
                     
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Always remember me" />
-                        </Form.Group>
-
-                        <center> 
-                            <Button className="submitbtn" type="submit">Submit</Button>
-                        </center>
-
-                        <Form.Group controlId="formBasicSignin">
-                            <Form.Text className="signin">
-                                <center><p className="text-signup">Already have an account?</p></center>
-                                <LinkContainer to="/signin">
-                                    <Nav.Link className="link-signup"><center>Sign In</center></Nav.Link>
-                                </LinkContainer>
-                        </Form.Text>
-                    </Form.Group>
-                </Form>
+                </Container>
             </Container>
+            <br></br>
         </Container>
-        <br></br>
-    </Container>
-   </> )
+    </> )
 }
 
 export default Signup

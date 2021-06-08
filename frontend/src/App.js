@@ -1,7 +1,9 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Mic, Signup, Signin, Footer} from './components';
+import { Header, Welcome, Contact, Review, History,Dashboard, Practice, Audioinput, Mic, Signup, Signin, Footer} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import dashboard from './components/dash/Dashboard';
+
 
 function App() {
   return (
@@ -36,6 +38,11 @@ function App() {
           <Route exact path="/history">
             <Header />
             <History />
+            <Footer />
+          </Route>
+          <Route exact path="/dashboard">
+            <Header />
+            <Dashboard />
             <Footer />
           </Route>
           <Route exact path="/signup">
