@@ -2,11 +2,13 @@ import {React, useState} from 'react'
 import {Nav} from 'react-bootstrap';
 import {Button, Form, Container, Modal} from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
+import { useHistory } from "react-router-dom";
 import "./Signup.css";
 import axios from 'axios';
 
 const Signup = () => {
 
+<<<<<<< HEAD
     const [show, setShow] = useState(false);
 
 	const [post, setPost] = useState({
@@ -23,6 +25,26 @@ const Signup = () => {
 		setPost({...post,[e.target.name]: e.target.value})
 	}
 
+=======
+    let history = useHistory();
+
+    const [show, setShow] = useState(false);
+
+	const [post, setPost] = useState({
+		username:'',
+        email:'',
+        first_name:'',
+        last_name:'',
+        date_of_birth:'',
+        password:'',
+        password2:''
+	});
+
+	const onInputChange = e => {
+		setPost({...post,[e.target.name]: e.target.value})
+	}
+
+>>>>>>> upstream/main
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		await axios.post('http://127.0.0.1:8000/api/register/', post);
@@ -39,6 +61,10 @@ const Signup = () => {
     }
 
     const handleClose = () => setShow(false);
+<<<<<<< HEAD
+=======
+    const redirect = () => history.push("/signin");
+>>>>>>> upstream/main
 
         return (<>
 
@@ -48,7 +74,11 @@ const Signup = () => {
                         <Button variant="secondary" onClick={handleClose}>
                             Close
                         </Button>
+<<<<<<< HEAD
                         <Button variant="primary" onClick={handleClose}>
+=======
+                        <Button variant="primary" onClick={redirect}>
+>>>>>>> upstream/main
                             Sign in
                         </Button>
                     </Modal.Footer>

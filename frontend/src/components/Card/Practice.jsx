@@ -1,8 +1,7 @@
 import React from "react";
 import Card from "./Card";
-import Sdata from "./Sdata";
 
-const Practice=()  => {
+const Practice=({cards})  => {
     return(
     <div className="my-5">
       <h3 className="display-6" align="center"><strong>- Exercises -</strong></h3>
@@ -11,14 +10,9 @@ const Practice=()  => {
         <div className='row'>
           <div className="col-10 mx-auto">
             <div className='row gy-4'>
-            {
-              Sdata.map((val,ind)=>{
-                return <Card
-                imgsrc={val.imgsrc}
-                title={val.title}
-                />
-              })
-            }
+              {cards.map((card)=>(
+                <Card card={card}/>
+              ))}
             </div>
           </div>
         </div>

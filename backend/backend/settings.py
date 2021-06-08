@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,10 +37,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "corsheaders",
     "rest_framework",
     "accounts.apps.AccountsConfig",
     "rest_framework_simplejwt.token_blacklist",
+<<<<<<< HEAD
     "corsheaders",
+=======
+>>>>>>> upstream/main
     "core.apps.CoreConfig",
 ]
 
@@ -59,6 +63,11 @@ CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
 
+<<<<<<< HEAD
+=======
+CORS_ALLOW_CREDENTIALS = True
+
+>>>>>>> upstream/main
 ROOT_URLCONF = "backend.urls"
 
 TEMPLATES = [
@@ -68,6 +77,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                'django.template.context_processors.media',
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
@@ -141,3 +151,7 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = "accounts.Customer"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_DIR = os.path.join(BASE_DIR,'media')

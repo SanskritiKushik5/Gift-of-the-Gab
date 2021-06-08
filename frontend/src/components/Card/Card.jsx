@@ -1,20 +1,20 @@
 import React from "react";
 import {Nav} from 'react-bootstrap';
-import web from "../Images/sample.jpg";
 import Button from 'react-bootstrap/Button';
 import "./Card.css";
 import { LinkContainer } from "react-router-bootstrap";
 
-const Card=()  => {
+const Card=({card})  => {
+  
     return(<>
-          <div className="col-md-4 col-10 mx-auto">
+          <div className="col-md-4 col-10 mx-auto container">
             <div class="card" >
-              <img src={web} class="card-img-top" alt="..."/>
+              <img src={`http://127.0.0.1:8000${card.thumbnail}`} class="card-img-top" alt="..."/>
               <div class="card-body">
-                <h5 class="card-title ">Breathing Exercises</h5>
+                <h5 class="card-title ">{card.exercise_name}</h5>
                 <hr></hr>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <LinkContainer to="/audioinput">
+                <p class="card-text">{card.description}</p>
+                <LinkContainer to={`audioinput/${card.id}`}>
                     <Nav.Link className="rd_activity"><Button variant="primary" className="b_activity">Start Practice</Button></Nav.Link>
                 </LinkContainer>
               </div>

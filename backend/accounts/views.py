@@ -4,6 +4,16 @@ from .serializers import UserRegisterSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.decorators import api_view
+
+@api_view(['GET'])
+def current_user(request):
+    """
+    Determine the current user by their token, and return their data
+    """
+    
+    serializer = UserRegisterSerializer(request.user)
+    return Response(serializer.data)
 
 
 class RegisterAPIView(APIView):
@@ -11,6 +21,7 @@ class RegisterAPIView(APIView):
 
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
+        print(serializer)
         if serializer.is_valid():
             user = serializer.save()
             refresh = RefreshToken.for_user(user)
@@ -21,9 +32,8 @@ class RegisterAPIView(APIView):
                 "user": serializer.data,
             }
             return Response(response_data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class LogOutAPIView(APIView):
     def post(self, request, format=None):

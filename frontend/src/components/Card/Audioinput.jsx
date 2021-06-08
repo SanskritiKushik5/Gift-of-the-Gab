@@ -1,16 +1,19 @@
-import { useState, useRef } from 'react'
-import audio from '../Audio/1.mp3';
+import { useState, useRef, useEffect } from 'react'
 import Slider from './Slider'
 import ControlPanel from '../Controls/ControlPanel'
-import {Col, Row, Card} from 'react-bootstrap';
-import img from '../Images/sample.jpg';
+import Mic from './Mic'
+import {Col, Row, Card, Button} from 'react-bootstrap';
+import { useParams } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 function Audioinput() {
   const [percentage, setPercentage] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
-
+  const [card, setCard] = useState({});
+  const { id } = useParams();
   const audioRef = useRef()
 
   const onChange = (e) => {
@@ -41,23 +44,51 @@ function Audioinput() {
     setPercentage(+percent)
     setCurrentTime(time.toFixed(2))
   }
+  useEffect(() => {
+    loadCard();
+  }, []);
+  const loadCard = async () => {
+    const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
+    setCard(result.data);
+  }
+  
+  // const exercise_name = document.getElementById("cardTitle");
+  // const description = document.getElementById("cardDesc");
+  // const thumbnail = document.getElementById("cardImg");
+  
+  // const [post, setPost] = useState({
+	// 	exercise_name: exercise_name,
+  //   description: description,
+  //   thumbnail: thumbnail
+	// });
+
+	// const onClick = async (e) => {
+	// 	await axios.post('http://127.0.0.1:8000/api/history/', post);
+  //   setPost({
+  //     exercise_name: exercise_name,
+  //     description: description,
+  //     thumbnail: thumbnail     
+  //   })
+	// }
 
   return (
     <div className='app-container'>
     <br></br>
     <div className='col-10'>
       <Row className='no-gutters'>
-            <Col md={5} lg={5}  >
-                <Card.Img src={img} />
+            <Col md={4} lg={4}  >
+                <Card.Img className='exe-img' id="cardImg" src={`http://127.0.0.1:8000${card.thumbnail}`}/>
             </Col>
             <Col>
                 <Card.Body>
                 <br></br>
-                    <Card.Title>Pronounciation Exercise 3</Card.Title>
+                    <Card.Title id="cardTitle">{card.exercise_name}</Card.Title>
                     <Card.Text>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis.</p>
-                        <small>Instructions: <br></br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a sapien facilisis, lacinia purus vel, varius magna. Maecenas non leo quam. Vivamus et nunc sagittis, convallis enim a, venenatis dui. Morbi sit amet diam felis. Aliquam erat volutpat. Aenean velit odio, rhoncus eget est quis, egestas tempus nunc.</small>
-                        </Card.Text>
+                    <pre>
+                        <p className="flex-container" id="cardDesc">{card.description}</p>
+                        <small className="flex-container">Instructions: <br></br>{card.instructions}</small>
+                    </pre>
+                    </Card.Text>
                 </Card.Body>
             </Col>
         </Row>
@@ -69,7 +100,7 @@ function Audioinput() {
         onLoadedData={(e) => {
           setDuration(e.currentTarget.duration.toFixed(2))
         }}
-        src={audio}
+        src={`http://127.0.0.1:8000${card.audio}`}
       ></audio>
       <ControlPanel
         play={play}
@@ -82,6 +113,10 @@ function Audioinput() {
         <h3 align="center">- Start Recording -</h3>
         <p align="center">Follow the instructions and attempt the exercise by starting the recorder...</p>
       </div>
+      <Mic />
+      <center>
+      <Button variant="primary" className="btn x">Submit Recording</Button>
+      </center>
     </div>
   )
 }

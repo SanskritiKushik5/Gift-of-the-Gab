@@ -10,3 +10,23 @@
 h3{
     margin-bottom: 20px;
 }
+ 
+.card-img-top{
+    height: 300px;
+    width: auto;
+}
+
+.card-text{
+    text-overflow:inherit;
+}
+
+.exe-img{
+    height: auto;
+    width: 400px;
+    margin: auto;
+}
+
+pre{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: medium;
+}

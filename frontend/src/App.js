@@ -1,13 +1,31 @@
+import {React, useState, useEffect} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+<<<<<<< HEAD
 import { Header, Welcome, Contact, Review, History,Dashboard, Practice, Audioinput, Mic, Signup, Signin, Footer} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import dashboard from './components/dash/Dashboard';
 
+=======
+import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop} from './components';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import axios from "axios";
+>>>>>>> upstream/main
 
 function App() {
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    loadCards();
+  }, []);
+  const loadCards = async () => {
+    const result = await axios.get("http://127.0.0.1:8000/api/card/");
+    console.log(result.data)
+    setCards(result.data);
+  }
   return (
     <Router>
+     <ScrollToTop>
       <div className="app">
         <Switch>
           <Route exact path="/">
@@ -16,7 +34,7 @@ function App() {
             <br />
             <Review />
             <br />
-            <Practice/>
+            <Practice cards={cards}/>
             <Footer />
           </Route>
           <Route exact path="/contact">
@@ -26,13 +44,12 @@ function App() {
           </Route>
           <Route exact path="/exercise">
             <Header />
-            <Practice />
+            <Practice cards={cards}/>
             <Footer />
           </Route>
-          <Route exact path="/audioinput">
+          <Route exact path="/audioinput/:id">
             <Header />
             <Audioinput />
-            <Mic />
             <Footer />
           </Route>
           <Route exact path="/history">
@@ -57,6 +74,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+     </ScrollToTop>
     </Router>
   );
 }
