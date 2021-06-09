@@ -1,0 +1,44 @@
+.CSS{
+    margin:30px;
+    padding:10px;
+}
+h3{
+    color: black;
+}
+.card{
+    padding:30px;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 20px;
+    line-height: 1.33;
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+.button {
+    width: 30px;
+    height: 90px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.42857;
+}
+
+span.step {
+    background: #ccc;
+    border-radius: 0.8em;
+    -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
+    color: #1f79cd;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 1.6em;
+    margin-right: 5px;
+    text-align: center;
+    width: 1.6em; 
+  }
