@@ -5,14 +5,15 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.decorators import api_view
+import pprint
 
 @api_view(['GET'])
 def current_user(request):
     """
     Determine the current user by their token, and return their data
     """
-    
-    serializer = UserRegisterSerializer(request.user)
+    pprint.pprint(request.META)
+    serializer = UserRegisterSerializer(request.user.id)
     return Response(serializer.data)
 
 
