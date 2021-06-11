@@ -16,7 +16,7 @@ class History(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     date_time = models.DateTimeField(auto_now_add=True)
     exercise_name = models.CharField(max_length=100)
-    thumbnail = models.ImageField(upload_to="card/images", default="")
+    thumbnail = models.ImageField(upload_to="history/images", default="")
     description = models.TextField()
 
     def __str__(self):
