@@ -20,4 +20,11 @@ class History(models.Model):
     description = models.TextField()
 
     def __str__(self):
-        return self.date_time
+        return self.customer
+
+class ExerciseCount(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    count = models.IntegerField()
+
+    def __str__(self):
+        return self.customer
