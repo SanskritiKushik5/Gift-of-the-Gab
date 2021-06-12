@@ -4,17 +4,29 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop,Dashboard} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from "axios";
+// import { tokenConfig } from "./auth";
 
 function App() {
   const [cards, setCards] = useState([]);
+  const [details, setDetails] = useState([]);
 
   useEffect(() => {
     loadCards();
+    loadDetails();
   }, []);
   const loadCards = async () => {
     const result = await axios.get("http://127.0.0.1:8000/api/card/");
-    console.log(result.data)
     setCards(result.data);
+  }
+  const loadDetails = async () => {
+    const accessToken = String(localStorage.getItem('access'))
+    const result = await axios.get("http://127.0.0.1:8000/api/current_user/", 
+    {headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    }});
+    setDetails(result.data);
+    console.log(details)
   }
   return (
     <Router>

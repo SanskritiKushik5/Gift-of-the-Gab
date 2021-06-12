@@ -11,8 +11,8 @@ from rest_framework.authentication import SessionAuthentication
 
 
 class CurrentUserAPIView(APIView):
-    authentication_classes = (TokenAuthentication, SessionAuthentication)
-    permission_classes = [IsAuthenticated]
+    authentication_classes = (TokenAuthentication,SessionAuthentication)
+    permission_classes = (IsAuthenticated,) 
     def get(self, request, format=None):
         serializer = CustomerSerializer(request.user)
         return Response(serializer.data)
@@ -22,7 +22,6 @@ class RegisterAPIView(APIView):
 
     def post(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
-        print(serializer)
         if serializer.is_valid():
             user = serializer.save()
             refresh = RefreshToken.for_user(user)

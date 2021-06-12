@@ -1,15 +1,25 @@
+// import { Component } from 'react';
+// import axios from 'axios';
 
-import axios from 'axios';
+// class CheckAuth extends Component {
+//     CheckLoginStatus(){
+//         axios.get('http://127.0.0.1:8000/current_user/', { withCredentials: true }).then(response => {
+//             console.log("logged in?", response);
+//         }).catch(error => {
+//             console.log("check login error", error);
+//         });
+//     }
 
-function CheckAuth() {
+//     componentDidMount(){
+//         this.CheckLoginStatus();
+//     }
 
-        const result = axios.get("http://127.0.0.1:8000/api/current_user/");
-        console.log(result.data)
+//     render() {
+//         return(
+//             <>
+//             </>
+//         )
+//   }
 
-        return(
-            <>
-            </>
-        );
-
-}
-export default CheckAuth;
+// }
+// export default CheckAuth
