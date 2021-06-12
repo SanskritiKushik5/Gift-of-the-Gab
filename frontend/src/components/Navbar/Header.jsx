@@ -3,12 +3,12 @@ import Button from 'react-bootstrap/Button';
 import "./Header.css"
 import { LinkContainer } from "react-router-bootstrap";
 
-import CheckAuth from '../CheckAuth/CheckAuth'
+// import CheckAuth from '../CheckAuth/CheckAuth'
 
 const Header = () => {
     return (
         <>
-        <CheckAuth />
+        {/* <CheckAuth /> */}
             <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
                 <LinkContainer to="/">
                     <Navbar.Brand className="ml-xs-2 app-name">Gift of the Gab</Navbar.Brand>
