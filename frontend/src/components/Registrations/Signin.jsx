@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./Signup.css";
 import axios from 'axios';
+import { setAxiosAuthToken } from './utils';
 
 const Signin = () => {
 
@@ -20,7 +21,12 @@ const Signin = () => {
 	}
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		await axios.post('http://127.0.0.1:8000/api/login/', post);
+		await axios.post('http://127.0.0.1:8000/api/login/', post)
+        .then(response => {
+            const auth_token = response.data["access"]; // get auth_token
+            console.log(response.data["access"])
+            setAxiosAuthToken(auth_token);        // set token in axios header
+          });
         setPost({
             username:'',
             password:''

@@ -12,7 +12,7 @@ from rest_framework.authentication import SessionAuthentication
 
 class CurrentUserAPIView(APIView):
     authentication_classes = (TokenAuthentication, SessionAuthentication)
-    permission_classes = (IsAuthenticated,)
+    permission_classes = [IsAuthenticated]
     def get(self, request, format=None):
         serializer = CustomerSerializer(request.user)
         return Response(serializer.data)

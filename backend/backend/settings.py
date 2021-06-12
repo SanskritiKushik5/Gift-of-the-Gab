@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "rest_framework_simplejwt.token_blacklist",
     "core.apps.CoreConfig",
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +149,14 @@ AUTH_USER_MODEL = "accounts.Customer"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_DIR = os.path.join(BASE_DIR,'media')
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=45),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+JWT_AUTH = {
+    # Authorization:Token xxx
+    'JWT_AUTH_HEADER_PREFIX': 'Token',
+}

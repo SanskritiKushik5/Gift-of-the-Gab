@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0002_alter_customer_email'),
+        ('core', '0006_alter_history_date_time'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='customer',
-            name='email',
-            field=models.EmailField(blank=True, max_length=254, verbose_name='email address'),
+            model_name='card',
+            name='duration',
+            field=models.DurationField(),
         ),
     ]
