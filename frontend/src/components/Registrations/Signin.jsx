@@ -5,7 +5,6 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./Signup.css";
 import axios from 'axios';
-import { setAxiosAuthToken } from './utils';
 
 const Signin = () => {
 
