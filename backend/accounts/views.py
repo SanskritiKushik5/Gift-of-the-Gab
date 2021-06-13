@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from rest_framework.views import APIView
 from .serializers import UserRegisterSerializer, CustomerSerializer
@@ -11,9 +12,10 @@ from rest_framework.authentication import SessionAuthentication
 
 
 class CurrentUserAPIView(APIView):
-    authentication_classes = (TokenAuthentication,SessionAuthentication)
+    # authentication_classes = (TokenAuthentication,SessionAuthentication)
     permission_classes = (IsAuthenticated,) 
-    def get(self, request, format=None):
+    def get(self, request , format=None):
+        print(request.data, type(request))
         serializer = CustomerSerializer(request.user)
         return Response(serializer.data)
 
