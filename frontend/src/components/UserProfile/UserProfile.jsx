@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button,Container, Modal, Form, Nav} from 'react-bootstrap';
 
-const UserProfile = () => {
+const UserProfile = ({details}) => {
 return (
     <>
     <Container className="form-box flex">
@@ -9,33 +9,39 @@ return (
     <Form>
     <Form.Group controlId="username">
                                 <Form.Label>Username</Form.Label>
+                                <p>{details.username}</p>
                                 <Form.Control  name="username" type="username" placeholder="Username"/>
                             </Form.Group>
 
                             <Form.Group controlId="email">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control name="email" type="email" placeholder="Enter email" />
+                                <p>{details.email}</p>
+                                <Form.Control name="email" type="email" placeholder="${details.username}" />
                                 <Form.Text className="text-muted">
                                 </Form.Text>
                             </Form.Group>
 
                             <Form.Group controlId="first_name">
                                 <Form.Label>First Name</Form.Label>
+                                <p>{details.first_name}</p>
                                 <Form.Control name="first_name" type="fname" placeholder="First Name" />
                             </Form.Group>
 
                             <Form.Group controlId="last_name">
                                 <Form.Label>Last Name</Form.Label>
+                                <p>{details.last_name}</p>
                                 <Form.Control name="last_name" type="lname" placeholder="Last Name" />
                             </Form.Group>
 
                             <Form.Group controlId="date_of_birth">
                                 <Form.Label>Date Of Birth</Form.Label>
+                                <p>{details.date_of_birth}</p>
                                 <Form.Control name="date_of_birth" type="date" placeholder="Date of Birth" />
                             </Form.Group>
 
                             <Form.Group controlId="password">
                                 <Form.Label>Current Password</Form.Label>
+                                <p></p>
                                 <Form.Control name="password" type="password" placeholder="Password" />
                             </Form.Group>
                             <Form.Group controlId="password2">

@@ -1,7 +1,7 @@
 import {React, useState} from 'react';
 import { Form, Button, Container, Row } from "react-bootstrap";
 import "./Contact.css";
-import swal from 'sweetalert';
+/*import swal from 'sweetalert';*/
 import axios from 'axios';
 
 const Contact = () => {
@@ -22,11 +22,11 @@ const Contact = () => {
             email:'',
             message:''
         })
-        swal({
+        /*swal({
             title: "Submitted Successfully!",
             text: "We will reach out to you soon!",
             icon: "success",
-          });
+          });*/
 	}
     return (
         <Container className="box">
