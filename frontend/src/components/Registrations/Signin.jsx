@@ -20,7 +20,12 @@ const Signin = () => {
 	}
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		await axios.post('http://127.0.0.1:8000/api/login/', post);
+		await axios.post('http://127.0.0.1:8000/api/login/', post)
+        .then(response => {
+            const auth_token = response.data["access"]; // get auth_token
+            localStorage.setItem('access', auth_token);    // set token in axios header
+            console.log(localStorage.getItem('access'))
+          });
         setPost({
             username:'',
             password:''

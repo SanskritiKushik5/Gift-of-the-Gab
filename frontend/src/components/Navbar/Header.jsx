@@ -5,9 +5,8 @@ import "./Header.css"
 import { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 
+// import CheckAuth from '../CheckAuth/CheckAuth'
 
-
-    
 const Header = () => {
     const [seed, setSeed] = useState('');
 
@@ -17,6 +16,7 @@ const Header = () => {
     );
     return (
         <>
+        {/* <CheckAuth /> */}
             <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
                 <LinkContainer to="/">
                     <Navbar.Brand className="ml-xs-2 app-name">Gift of the Gab</Navbar.Brand>
@@ -41,6 +41,12 @@ const Header = () => {
                                     <a href="/signin">Logout</a>
                                 </div>
                         </div>
+                        <LinkContainer to="/signin">
+                            <Nav.Link><Button variant="primary ml-1" >Sign In</Button></Nav.Link>
+                        </LinkContainer>
+                        <LinkContainer to="/signup">
+                            <Nav.Link><Button variant="primary ml-2" >Sign Up</Button></Nav.Link>
+                        </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>
                 </Navbar>

@@ -1,5 +1,4 @@
 import React from 'react'
-
 import AudioReactRecorder, { RecordState } from 'audio-react-recorder'
 import 'audio-react-recorder/dist/index.css'
 import "./Mic.css";
@@ -56,6 +55,7 @@ class Mic extends React.Component {
           </button>
         </div>
         <audio
+          className="container"
           id='audio'
           controls
           src={this.state.audioData ? this.state.audioData.url : null}
