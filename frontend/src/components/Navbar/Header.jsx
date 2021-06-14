@@ -1,9 +1,20 @@
 import {Navbar, Nav} from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
+import { Avatar} from "@material-ui/core";
 import "./Header.css"
+import { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 
+
+
+    
 const Header = () => {
+    const [seed, setSeed] = useState('');
+
+    useEffect(() =>{
+        setSeed(Math.floor(Math.random() * 50) );
+    }
+    );
     return (
         <>
             <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
@@ -22,9 +33,14 @@ const Header = () => {
                         <LinkContainer to="/contact">
                             <Nav.Link className="link contact">Contact</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/signup">
-                            <Nav.Link><Button variant="primary ml-1" >Sign Up</Button></Nav.Link>
-                        </LinkContainer>
+                        <div class="dropdown">
+                        <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/initials/${seed}.svg`}/></Nav.Link>
+                                <div class="dropdown-content">
+                                
+                                    <a href="/userprofile">Profile</a>
+                                    <a href="/signin">Logout</a>
+                                </div>
+                        </div>
                     </Nav>
                 </Navbar.Collapse>
                 </Navbar>

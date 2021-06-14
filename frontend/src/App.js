@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Mic, Signup, Signin, Footer} from './components';
+import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Mic, Signup, Signin, Footer, UserProfile} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from "axios";
 
@@ -58,6 +58,11 @@ function App() {
           <Route exact path="/signin">
             <Header />
             <Signin />
+            <Footer />
+          </Route>
+          <Route exact path="/userprofile">
+            <Header />
+            <UserProfile />
             <Footer />
           </Route>
         </Switch>

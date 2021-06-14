@@ -4,6 +4,17 @@ from .serializers import UserRegisterSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import SessionAuthentication
+
+
+class CurrentUserAPIView(APIView):
+    authentication_classes = (TokenAuthentication, SessionAuthentication)
+    permission_classes = (IsAuthenticated,)
+    def get(self, request, format=None):
+        serializer = CustomerSerializer(request.user)
+        return Response(serializer.data)
 
 
 class RegisterAPIView(APIView):

@@ -1,6 +1,10 @@
 from rest_framework import serializers
 from .models import Customer
 
+class CustomerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = "_all_"
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(required=True, write_only=True)
