@@ -7,15 +7,17 @@ import { LinkContainer } from "react-router-bootstrap";
 
 // import CheckAuth from '../CheckAuth/CheckAuth'
 
-const Header = (details) => {
+const Header = ({details}) => {
     const [seed, setSeed] = useState('');
 
     useEffect(() =>{
         setSeed(Math.floor(Math.random() * 50) );
-    }
-    );
+    });
+
+    console.log(details.is_active)
     var active = details.is_active
-        if(active===true){
+    console.log(active)
+    if(active===true){
 return (
         <>
         {/* <CheckAuth /> */}

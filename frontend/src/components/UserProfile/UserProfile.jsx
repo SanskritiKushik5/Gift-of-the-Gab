@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button,Container, Modal, Form, Nav} from 'react-bootstrap';
+import {Button, Container, Form} from 'react-bootstrap';
 
 const UserProfile = ({details}) => {
 return (
@@ -16,7 +16,7 @@ return (
                             <Form.Group controlId="email">
                                 <Form.Label>Email address</Form.Label>
                                 <p>{details.email}</p>
-                                <Form.Control name="email" type="email" placeholder="${details.username}" />
+                                <Form.Control name="email" type="email" placeholder="email" />
                                 <Form.Text className="text-muted">
                                 </Form.Text>
                             </Form.Group>
