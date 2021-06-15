@@ -9,4 +9,5 @@ export { default as Audioinput } from './Card/Audioinput';
 export { default as Signup } from './Registrations/Signup';
 export { default as Signin } from './Registrations/Signin';
 export { default as Footer } from './Footer/Footer';
+export { default as UserProfile } from './UserProfile/UserProfile';
 export { default as ScrollToTop } from './Scrolltotop/ScrollToTop';
