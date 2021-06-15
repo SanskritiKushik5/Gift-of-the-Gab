@@ -19,15 +19,13 @@ function App() {
     setCards(result.data);
   }
   const loadDetails = async () => {
-    console.log(localStorage.getItem('access'))
-    const accessToken = String(localStorage.getItem('access'))
+    const accessToken = String(localStorage.getItem('access'));
     const result = await axios.get("http://127.0.0.1:8000/api/current_user/", 
     {headers: {
       "Authorization": `Bearer ${accessToken}`,
       "Content-Type": "application/json",
     }});
     setDetails(result.data);
-    console.log(details)
   }
   return (
     <Router>
