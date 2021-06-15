@@ -39,7 +39,7 @@ return (
                         </LinkContainer>
                         
                         <div class="dropdown">
-                        <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/initials/${seed}.svg`}/></Nav.Link>
+                        <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/jdenticon/${seed}.svg`}/></Nav.Link>
                                 <div class="dropdown-content">
                                 
                                     <a href="/userprofile">Profile</a>
