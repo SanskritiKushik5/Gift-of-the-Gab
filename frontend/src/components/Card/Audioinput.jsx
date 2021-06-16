@@ -2,12 +2,13 @@ import { useState, useRef, useEffect } from 'react'
 import Slider from './Slider'
 import ControlPanel from '../Controls/ControlPanel'
 import Mic from './Mic'
-import {Col, Row, Card, Button} from 'react-bootstrap';
+import {Col, Row, Card, Button, Nav} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { LinkContainer } from "react-router-bootstrap";
 
-function Audioinput() {
+function Audioinput({details}) {
   const [percentage, setPercentage] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
@@ -51,27 +52,29 @@ function Audioinput() {
     const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
     setCard(result.data);
   }
-  
-  // const exercise_name = document.getElementById("cardTitle");
-  // const description = document.getElementById("cardDesc");
-  // const thumbnail = document.getElementById("cardImg");
-  
-  // const [post, setPost] = useState({
-	// 	exercise_name: exercise_name,
-  //   description: description,
-  //   thumbnail: thumbnail
-	// });
 
-	// const onClick = async (e) => {
-	// 	await axios.post('http://127.0.0.1:8000/api/history/', post);
-  //   setPost({
-  //     exercise_name: exercise_name,
-  //     description: description,
-  //     thumbnail: thumbnail     
-  //   })
-	// }
+  const submitPost = () => {
+      {
+        const exercise_name = card.exercise_name
+        const description = card.description
+        const thumbnail = card.thumbnail
+        const customer = details.username
+        console.log(exercise_name, description, thumbnail, customer);
+        
+         axios.post("http://127.0.0.1:8000/api/history/",{
+           data: {
+            exercise_name: exercise_name,
+            description: description,
+            thumbnail: thumbnail,
+            customer: customer
+           }
+         });
+        console.log("heyyyyyyyyyyyy")
+      }
+  }
 
   return (
+    <>
     <div className='app-container'>
     <br></br>
     <div className='col-10'>
@@ -114,10 +117,16 @@ function Audioinput() {
         <p align="center">Follow the instructions and attempt the exercise by starting the recorder...</p>
       </div>
       <Mic />
-      <center>
-      <Button variant="primary" className="btn x">Submit Recording</Button>
-      </center>
+      <LinkContainer to="/exercise">
+        <Nav.Link>
+          <center>
+            <Button onClick={submitPost} id="submit_post" variant="primary" className="btn x">Submit Recording</Button>
+          </center>
+        </Nav.Link>
+      </LinkContainer>
+      
     </div>
+    </>
   )
 }
 

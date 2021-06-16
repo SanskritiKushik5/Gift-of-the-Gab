@@ -20,7 +20,7 @@ class CardAPIView(APIView):
 
 class HistoryAPIView(APIView):
     serializer_class = HistorySerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    # permission_classes = [IsAuthenticated]
     def post(self, request, format=None):
         serializer = self.serializer_class(
             data=request.data, context={"request": request}

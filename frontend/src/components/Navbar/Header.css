@@ -36,7 +36,7 @@
 }
 
 .dropdown:hover .dropdown-content {display: block;}
-@media (min-width: 992px) {
+/* @media (min-width: 992px) { */
   .link {
     margin-left: 2em;
     margin-right: 2em;
@@ -60,4 +60,4 @@
   .contact{
     margin-right: 25em;
   }
-}
+

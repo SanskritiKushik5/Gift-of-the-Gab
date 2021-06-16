@@ -55,7 +55,7 @@ function App() {
           </Route>
           <Route exact path="/audioinput/:id">
             <Header details={details} />
-            <Audioinput />
+            <Audioinput details={details}/>
             <Footer />
           </Route>
           <Route exact path="/history">

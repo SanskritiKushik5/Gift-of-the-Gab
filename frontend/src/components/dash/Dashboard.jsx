@@ -10,19 +10,19 @@ const dashboard=()  => {
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
-  <button type="button" class="btn btn-default btn-circle btn-xl"><i class="fa fa-check"></i>
+  <button type="button" class="btn btn-circle btn-xl">
    Sun</button>
-  <button type="button" class="btn btn-primary btn-circle btn-xl"><i class="fa fa-list"></i>
+  <button type="button" class="btn btn-circle btn-xl">
    Mon</button>
-  <button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-link"></i>
+  <button type="button" class="btn btn-circle btn-xl">
    Tu</button>
-  <button type="button" class="btn btn-info btn-circle btn-xl"><i class="fa fa-check"></i>
+  <button type="button" class="btn btn-circle btn-xl">
    Wed</button>
-  <button type="button" class="btn btn-warning btn-circle btn-xl"><i class="fa fa-times"></i>
+  <button type="button" class="btn btn-circle btn-xl">
    Thu</button>
-  <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="fa fa-heart"></i>
+  <button type="button" class="btn btn-circle btn-xl">
    Fri</button>
-  <button type="button" class="btn btn-danger btn-circle btn-xl"><i class="fa fa-heart"></i>
+  <button type="button" class="btn btn-circle btn-xl">
    Sat</button>
 </center>
 <div className="card">
