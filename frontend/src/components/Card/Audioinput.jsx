@@ -2,13 +2,13 @@ import { useState, useRef, useEffect } from 'react'
 import Slider from './Slider'
 import ControlPanel from '../Controls/ControlPanel'
 import Mic from './Mic'
-import {Col, Row, Card, Button, Nav} from 'react-bootstrap';
+import {Col, Row, Card, Button, Form} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { LinkContainer } from "react-router-bootstrap";
 
-function Audioinput({details}) {
+function Audioinput({customer}) {
   const [percentage, setPercentage] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
@@ -52,27 +52,15 @@ function Audioinput({details}) {
     const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
     setCard(result.data);
   }
-
-  const submitPost = () => {
-      {
-        const exercise_name = card.exercise_name
-        const description = card.description
-        const thumbnail = card.thumbnail
-        const customer = details.username
-        console.log(exercise_name, description, thumbnail, customer);
-        
-         axios.post("http://127.0.0.1:8000/api/history/",{
-           data: {
-            exercise_name: exercise_name,
-            description: description,
-            thumbnail: thumbnail,
-            customer: customer
-           }
-         });
-        console.log("heyyyyyyyyyyyy")
-      }
-  }
-
+  const onSubmit = async (e) => {
+		e.preventDefault();
+		await axios.post('http://127.0.0.1:8000/api/history/', {
+      exercise_name: card.exercise_name,
+      thumbnail: `http://127.0.0.1:8000${card.thumbnail}`,
+      description: card.description,
+      customer: customer,
+    });
+	}
   return (
     <>
     <div className='app-container'>
@@ -116,15 +104,12 @@ function Audioinput({details}) {
         <h3 align="center">- Start Recording -</h3>
         <p align="center">Follow the instructions and attempt the exercise by starting the recorder...</p>
       </div>
-      <Mic />
-      <LinkContainer to="/exercise">
-        <Nav.Link>
-          <center>
-            <Button onClick={submitPost} id="submit_post" variant="primary" className="btn x">Submit Recording</Button>
-          </center>
-        </Nav.Link>
-      </LinkContainer>
-      
+      <Form onSubmit={e => onSubmit(e)}>
+        <Mic />
+        <center>
+        <Button variant="primary" type="submit" className="btn x">Submit Recording</Button>
+        </center>
+      </Form>
     </div>
     </>
   )
