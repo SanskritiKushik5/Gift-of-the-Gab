@@ -41,8 +41,8 @@ return (
                         <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/jdenticon/${seed}.svg`}/></Nav.Link>
                                 <div class="dropdown-content">
                                 
-                                    <a href="/userprofile">Profile</a>
-                                    <a href="#">Logout</a>
+                                    <a href="/userprofile" className="dd">Profile</a>
+                                    <a href="#" className="dd">Logout</a>
                                 </div>
                         </div>
                         </Nav>
