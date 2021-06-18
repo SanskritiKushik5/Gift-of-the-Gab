@@ -30,7 +30,7 @@ return (
                         <LinkContainer to="/exercise">
                             <Nav.Link className="link">Exercise</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/history">
+                        <LinkContainer to={`/history/${details.id}`}>
                             <Nav.Link className="link about-us">History</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/contact">

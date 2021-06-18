@@ -32,6 +32,7 @@ class HistoryAPIView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
     # def get_object(self):
     #     try:
     #         obj = History.objects.get()
@@ -92,3 +93,12 @@ class ContactAPIView(APIView):
             return Response(serialized_data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class HistoryDetailsAPIView(APIView):
+    serializer_class = HistorySerializer
+
+    def get(self, request, customer, format=None):
+        data = History.objects.all().filter(customer=customer)
+        serializer = self.serializer_class(data, many=True)
+        serialized_data = serializer.data
+        return Response(serialized_data, status=status.HTTP_200_OK)

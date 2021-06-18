@@ -6,7 +6,6 @@ import {Col, Row, Card, Button, Form} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 import axios from "axios";
-import { LinkContainer } from "react-router-bootstrap";
 
 function Audioinput({customer}) {
   const [percentage, setPercentage] = useState(0)
@@ -45,6 +44,8 @@ function Audioinput({customer}) {
     setPercentage(+percent)
     setCurrentTime(time.toFixed(2))
   }
+
+  
   useEffect(() => {
     loadCard();
   }, []);
@@ -52,6 +53,7 @@ function Audioinput({customer}) {
     const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
     setCard(result.data);
   }
+
   const onSubmit = async (e) => {
 		e.preventDefault();
 		await axios.post('http://127.0.0.1:8000/api/history/', {
