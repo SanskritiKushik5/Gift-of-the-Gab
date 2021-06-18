@@ -35,8 +35,12 @@
   z-index: 1;
 }
 
+<<<<<<< HEAD
+/*@media (min-width: 992px)*/
+=======
 .dropdown:hover .dropdown-content {display: block;}
 /* @media (min-width: 992px) { */
+>>>>>>> upstream/main
   .link {
     margin-left: 2em;
     margin-right: 2em;
@@ -57,6 +61,8 @@
   .contact {
     margin-left: 1em;
   }
+<<<<<<< HEAD
+=======
   .contact{
     margin-right: 25em;
   }
@@ -64,3 +70,4 @@
   .dd{
     color: #001457;
   }
+>>>>>>> upstream/main

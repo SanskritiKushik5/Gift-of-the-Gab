@@ -4,12 +4,35 @@ import "./Dashboard.css";
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import axios from "axios";
 
 const dashboard=()  => {
+  axios.get('http://127.0.0.1:8000/api/streaks/')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   return(<>
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
+<<<<<<< HEAD
+  <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-check"></i>
+   Sun</button>
+  <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-list"></i>
+   Mon</button>
+  <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-link"></i>
+   Tu</button>
+  <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-check"></i>
+   Wed</button>
+  <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-times"></i>
+   Thu</button>
+  <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-heart"></i>
+   Fri</button>
+  <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-heart"></i>
+=======
   <button type="button" class="btn btn-circle btn-xl">
    Sun</button>
   <button type="button" class="btn btn-circle btn-xl">
@@ -23,6 +46,7 @@ const dashboard=()  => {
   <button type="button" class="btn btn-circle btn-xl">
    Fri</button>
   <button type="button" class="btn btn-circle btn-xl">
+>>>>>>> upstream/main
    Sat</button>
 </center>
 <div className="card">
@@ -71,5 +95,6 @@ const dashboard=()  => {
 </>
   );
 };
+
 
 export default dashboard;
