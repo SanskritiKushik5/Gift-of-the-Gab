@@ -1,9 +1,25 @@
 import React from 'react';
 import "./History.css";
-import {Tab, Nav, Col, Row, Card, Button} from 'react-bootstrap';
-import img from '../Images/sample.jpg';
+import axios from "axios";
+import { useState, useEffect } from 'react'
+import { useParams } from "react-router-dom";
+import Hcard from "./Hcard";
 
 const History = () => {
+
+    const [history, setHistory] = useState([]);
+    const { id } = useParams();
+
+    useEffect(() => {
+        loadHistory();
+    }, []);
+    const loadHistory = async () => {
+        const result = await axios.get(`http://127.0.0.1:8000/api/history/${id}`);
+        console.log(result[0])
+        setHistory(result.data);
+    }
+    
+
     return (
         <div>
             <div className="row head-bg">
@@ -14,49 +30,14 @@ const History = () => {
                     <h1 className="display-2">28 </h1><h3>Total Exercises Done</h3>
                 </div>
             </div>
-            <div className="col-10 mx-auto">
+            <div className="col-8 mx-auto">
                 <div className="container-fluid">
                     <h2 align="center">Jan 2021</h2>
                     <br></br>
-                    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                        <Row>
-                            <Col sm={3}>
-                                <Nav variant="pills" className="flex-column">
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="first">21 Jan</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="second">19 Jan</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="third">17 Jan</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link eventKey="fourth">12 Jan</Nav.Link>
-                                    </Nav.Item>
-                                </Nav>
-                            </Col>
-                            <Col sm={9}>
-                                <Tab.Content>
-                                    <Tab.Pane eventKey="first">
-                                        <Card>
-                                            <Row className='no-gutters'>
-                                                <Col md={5} lg={5}  >
-                                                    <Card.Img src={img} />
-                                                </Col>
-                                                <Col>
-                                                    <Card.Body>
-                                                        <Card.Title>Breathing Exercise 1</Card.Title>
-                                                        <Card.Text>
-                                                            <p>21 Jan, Mon  15:31</p>
-                                                            <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis.</small>
-                                                        </Card.Text>
-                                                        <Button className="btn">Practice Again</Button>
-                                                    </Card.Body>
-                                                </Col>
-                                            </Row>
-                                        </Card>
-                                        <Card>
+                    {history.map((history)=>(
+                         <Hcard history={history}/>
+                    ))}
+                                        {/* <Card>
                                             <Row className='no-gutters'>
                                                 <Col md={5} lg={5}  >
                                                     <Card.Img src={img} />
@@ -135,8 +116,8 @@ const History = () => {
                             </Col>
                         </Row>
                     </Tab.Container>
-                    <br></br>
-                    <h2 align="center">Dec 2020</h2>
+                    <br></br> */}
+                    {/* <h2 align="center">Dec 2020</h2>
                     <br></br>
                     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
                         <Row>
@@ -254,7 +235,7 @@ const History = () => {
                                 </Tab.Content>
                             </Col>
                         </Row>
-                    </Tab.Container>
+                    </Tab.Container> */}
                 </div>
             </div>
         </div>

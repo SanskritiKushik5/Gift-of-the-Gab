@@ -6,6 +6,17 @@ class CustomerSerializer(serializers.ModelSerializer):
         model = Customer
         fields = "__all__"
 
+class DetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Customer
+        fields = [
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "date_of_birth",
+        ]
+
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(required=True, write_only=True)
     password2 = serializers.CharField(required=True, write_only=True)

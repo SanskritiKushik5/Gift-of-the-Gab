@@ -18,6 +18,7 @@ const dashboard=()  => {
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
+<<<<<<< HEAD
   <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-check"></i>
    Sun</button>
   <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-list"></i>
@@ -31,6 +32,21 @@ const dashboard=()  => {
   <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-heart"></i>
    Fri</button>
   <button type="button" class="btn btn-circle btn-xl"><i class="fa fa-heart"></i>
+=======
+  <button type="button" class="btn btn-circle btn-xl">
+   Sun</button>
+  <button type="button" class="btn btn-circle btn-xl">
+   Mon</button>
+  <button type="button" class="btn btn-circle btn-xl">
+   Tu</button>
+  <button type="button" class="btn btn-circle btn-xl">
+   Wed</button>
+  <button type="button" class="btn btn-circle btn-xl">
+   Thu</button>
+  <button type="button" class="btn btn-circle btn-xl">
+   Fri</button>
+  <button type="button" class="btn btn-circle btn-xl">
+>>>>>>> upstream/main
    Sat</button>
 </center>
 <div className="card">

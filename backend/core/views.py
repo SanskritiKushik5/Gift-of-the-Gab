@@ -20,7 +20,7 @@ class CardAPIView(APIView):
 
 class HistoryAPIView(APIView):
     serializer_class = HistorySerializer
-    permission_classes = [IsAuthenticated, IsOwner]
+    # permission_classes = [IsAuthenticated, IsOwner]
     def post(self, request, format=None):
         serializer = self.serializer_class(
             data=request.data, context={"request": request}
@@ -32,16 +32,18 @@ class HistoryAPIView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def get_object(self):
-        try:
-            obj = History.objects.get()
-            self.check_object_permissions(self.request, obj)
-            return obj
-        except History.DoesNotExist:
-            raise Http404
+
+    # def get_object(self):
+    #     try:
+    #         obj = History.objects.get()
+    #         self.check_object_permissions(self.request, obj)
+    #         return obj
+    #     except History.DoesNotExist:
+    #         raise Http404
 
     def get(self, request, format=None):
-        serializer = self.serializer_class(self.get_object())
+        data = History.objects.all()
+        serializer = self.serializer_class(data, many=True)
         serialized_data = serializer.data
         return Response(serialized_data, status=status.HTTP_200_OK)
 
@@ -98,6 +100,14 @@ class StreaksAPIView(APIView):
     def get(self, request, format=None):
         data = Streaks.objects.all()
 
+        serializer = self.serializer_class(data, many=True)
+        serialized_data = serializer.data
+        return Response(serialized_data, status=status.HTTP_200_OK)
+class HistoryDetailsAPIView(APIView):
+    serializer_class = HistorySerializer
+
+    def get(self, request, customer, format=None):
+        data = History.objects.all().filter(customer=customer)
         serializer = self.serializer_class(data, many=True)
         serialized_data = serializer.data
         return Response(serialized_data, status=status.HTTP_200_OK)

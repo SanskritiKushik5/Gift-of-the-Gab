@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .serializers import UserRegisterSerializer, CustomerSerializer
+from .serializers import UserRegisterSerializer, CustomerSerializer, DetailsSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -15,7 +15,6 @@ class CurrentUserAPIView(APIView):
     # authentication_classes = (TokenAuthentication,SessionAuthentication)
     permission_classes = (IsAuthenticated,) 
     def get(self, request , format=None):
-        print(request.data, type(request))
         serializer = CustomerSerializer(request.user)
         return Response(serializer.data)
 
@@ -48,3 +47,30 @@ class LogOutAPIView(APIView):
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+class UserDetailsAPIView(APIView):
+    serializer_class = DetailsSerializer
+
+    def get_object(self, pk):
+        try:
+            obj = Customer.objects.get(pk=pk)
+            self.check_object_permissions(self.request, obj)
+            return obj
+        except Customer.DoesNotExist:
+            raise Http404
+    
+    def get(self, request, pk, format=None):
+        serializer = self.serializer_class(self.get_object(pk))
+        serialized_data = serializer.data
+        return Response(serialized_data, status=status.HTTP_200_OK)
+
+    def put(self, request, pk, format=None):
+        customer = self.get_object(pk)
+        serializer = self.serializer_class(
+            customer, data=request.data, context={"request": request}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            serialized_data = serializer.data
+            return Response(serialized_data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

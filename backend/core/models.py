@@ -17,18 +17,18 @@ class History(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     date_time = models.DateTimeField(auto_now_add=True)
     exercise_name = models.CharField(max_length=100)
-    thumbnail = models.ImageField(upload_to="history/images", default="")
+    thumbnail = models.URLField(max_length=500, default="")
     description = models.TextField()
 
     def __str__(self):
-        return self.customer
+        return self.exercise_name
 
 class ExerciseCount(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     count = models.IntegerField()
-    
-    def __str__(self):
-        return self.customer
+
+    # def __str__(self):
+    #     return self.pk
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
