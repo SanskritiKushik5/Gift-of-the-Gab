@@ -49,6 +49,8 @@ function Audioinput({customer}) {
     setPercentage(+percent)
     setCurrentTime(time.toFixed(2))
   }
+
+  
   useEffect(() => {
     loadCard();
   }, []);
@@ -93,6 +95,7 @@ function Audioinput({customer}) {
     loadCount();
 	}
   return (
+    <>
     <div className='app-container'>
     <br></br>
     <div className='col-10'>
@@ -141,6 +144,7 @@ function Audioinput({customer}) {
         </center>
       </Form>
     </div>
+    </>
   )
 }
 

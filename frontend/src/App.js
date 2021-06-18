@@ -9,15 +9,23 @@ import axios from "axios";
 function App() {
   const [cards, setCards] = useState([]);
   const [details, setDetails] = useState([]);
+  const [historys, setHistorys] = useState([]);
 
   useEffect(() => {
     loadCards();
     loadDetails();
+    loadHistorys();
   }, []);
   const loadCards = async () => {
     const result = await axios.get("http://127.0.0.1:8000/api/card/");
     setCards(result.data);
   }
+
+  const loadHistorys = async () => {
+    const result = await axios.get("http://127.0.0.1:8000/api/history/");
+    setHistorys(result.data);
+  }
+
   const loadDetails = async () => {
     const accessToken = String(localStorage.getItem('access'));
     const result = await axios.get("http://127.0.0.1:8000/api/current_user/", 
@@ -56,7 +64,7 @@ function App() {
             <Audioinput customer={details.id}/>
             <Footer />
           </Route>
-          <Route exact path="/history">
+          <Route exact path="/history/:id">
             <Header details={details}/>
             <History />
             <Footer />
