@@ -19,6 +19,7 @@ class History(models.Model):
     exercise_name = models.CharField(max_length=100)
     thumbnail = models.URLField(max_length=500, default="")
     description = models.TextField()
+    card_id = models.IntegerField(default=0)
 
     def __str__(self):
         return self.exercise_name
