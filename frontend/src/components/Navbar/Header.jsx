@@ -14,9 +14,7 @@ const Header = ({details}) => {
         setSeed(Math.floor(Math.random() * 50) );
     });
 
-    console.log(details.is_active)
     var active = details.is_active
-    console.log(active)
     if(active===true){
 return (
         <>

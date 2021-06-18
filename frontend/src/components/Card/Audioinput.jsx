@@ -4,8 +4,9 @@ import ControlPanel from '../Controls/ControlPanel'
 import Mic from './Mic'
 import {Col, Row, Card, Button, Form} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
 import axios from "axios";
+
+var x = 0;
 
 function Audioinput({customer}) {
   const [percentage, setPercentage] = useState(0)
@@ -13,6 +14,10 @@ function Audioinput({customer}) {
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [card, setCard] = useState({});
+  const [count, setCount] = useState({
+    count: 1,
+    customer: customer,
+  })
   const { id } = useParams();
   const audioRef = useRef()
 
@@ -51,6 +56,32 @@ function Audioinput({customer}) {
     const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
     setCard(result.data);
   }
+  const postCount = async () => {
+    const result = await axios.post(`http://127.0.0.1:8000/api/count_add/`, {
+        count: 1,
+        customer: customer,
+    });
+  }
+  const putCount = async (x) => {
+    setCount({
+      count: x+1,
+      customer: customer,
+    })
+    const result = await axios.put(`http://127.0.0.1:8000/api/count/${customer}/`, count);
+  }
+  const loadCount = () => {
+    fetch(`http://127.0.0.1:8000/api/count/${customer}`, {method: "GET"})
+    .then(async response => {
+      const data = await response.json();
+      if (response.ok) {
+        x = data.count;
+        putCount(x);
+      }
+    })
+    .catch((err) => {
+        postCount();
+    })
+  }
   const onSubmit = async (e) => {
 		e.preventDefault();
 		await axios.post('http://127.0.0.1:8000/api/history/', {
@@ -59,6 +90,7 @@ function Audioinput({customer}) {
       description: card.description,
       customer: customer,
     });
+    loadCount();
 	}
   return (
     <div className='app-container'>
