@@ -44,6 +44,8 @@ function Audioinput({customer}) {
     setPercentage(+percent)
     setCurrentTime(time.toFixed(2))
   }
+
+  
   useEffect(() => {
     loadCard();
   }, []);
@@ -51,6 +53,7 @@ function Audioinput({customer}) {
     const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
     setCard(result.data);
   }
+
   const onSubmit = async (e) => {
 		e.preventDefault();
 		await axios.post('http://127.0.0.1:8000/api/history/', {
@@ -61,6 +64,7 @@ function Audioinput({customer}) {
     });
 	}
   return (
+    <>
     <div className='app-container'>
     <br></br>
     <div className='col-10'>
@@ -109,6 +113,7 @@ function Audioinput({customer}) {
         </center>
       </Form>
     </div>
+    </>
   )
 }
 

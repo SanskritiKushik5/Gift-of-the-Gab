@@ -14,13 +14,12 @@ const Header = ({details}) => {
         setSeed(Math.floor(Math.random() * 50) );
     });
 
-    console.log(details.is_active)
     var active = details.is_active
-    console.log(active)
     if(active===true){
 return (
         <>
         {/* <CheckAuth /> */}
+        <meta http-equiv="refresh"/>
             <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
                 <LinkContainer to="/">
                     <Navbar.Brand className="ml-xs-2 app-name">Gift of the Gab</Navbar.Brand>
@@ -31,7 +30,7 @@ return (
                         <LinkContainer to="/exercise">
                             <Nav.Link className="link">Exercise</Nav.Link>
                         </LinkContainer>
-                        <LinkContainer to="/history">
+                        <LinkContainer to={`/history/${details.id}`}>
                             <Nav.Link className="link about-us">History</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/contact">
@@ -42,8 +41,8 @@ return (
                         <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/jdenticon/${seed}.svg`}/></Nav.Link>
                                 <div class="dropdown-content">
                                 
-                                    <a href="/userprofile">Profile</a>
-                                    <a href="#">Logout</a>
+                                    <a href="/userprofile" className="dd">Profile</a>
+                                    <a href="#" className="dd">Logout</a>
                                 </div>
                         </div>
                         </Nav>
@@ -66,14 +65,9 @@ else{
                             <LinkContainer to="/exercise">
                                 <Nav.Link className="link">Exercise</Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/history">
-                                <Nav.Link className="link about-us">History</Nav.Link>
-                            </LinkContainer>
                             <LinkContainer to="/contact">
                                 <Nav.Link className="link contact">Contact</Nav.Link>
                             </LinkContainer>
-                            
-                        
     
                             <LinkContainer to="/signin">
                                 <Nav.Link><Button variant="primary ml-1" >Sign In</Button></Nav.Link>

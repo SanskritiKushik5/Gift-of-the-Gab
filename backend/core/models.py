@@ -26,8 +26,8 @@ class ExerciseCount(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     count = models.IntegerField()
 
-    def __str__(self):
-        return self.customer
+    # def __str__(self):
+    #     return self.pk
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
