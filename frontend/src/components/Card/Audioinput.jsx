@@ -61,6 +61,7 @@ function Audioinput({customer}) {
       thumbnail: `http://127.0.0.1:8000${card.thumbnail}`,
       description: card.description,
       customer: customer,
+      card_id: id,
     });
 	}
   return (

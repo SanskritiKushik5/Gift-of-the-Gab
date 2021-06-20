@@ -19,7 +19,7 @@ const Hcard = ({history}) => {
                                 <p>{mdt}</p>
                                 <small>{history.description}</small>
                             </Card.Text>
-                            <LinkContainer to={'/exercise'}>
+                            <LinkContainer to={`/audioinput/${history.card_id}`}>
                             <Button className="btn">Practice More</Button>
                             </LinkContainer>
                         </Card.Body>

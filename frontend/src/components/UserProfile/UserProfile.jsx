@@ -11,7 +11,6 @@ const UserProfile = ({details}) => {
         last_name: details.last_name,
         date_of_birth: details.date_of_birth,
 	});
-	const { username, email, first_name, last_name, date_of_birth } = user;
 	const onInputChange = e => {
 		setUser({...user,[e.target.name]: e.target.value})
 	}

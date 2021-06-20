@@ -14,7 +14,7 @@ const Welcome = () => {
                     <p>Hello! Speech can be a major confidence booster for many people, This project aims on improving your speech through different exercises and add a brighter element to your personality</p>
                 </Col>
                 <Col xs={12} md={6}>
-                    <Image src={img} alt="home img" fluid/>
+                    <Image className="homeImg" src={img} alt="home img" fluid/>
                 </Col>
             </Row>
         </Container>
