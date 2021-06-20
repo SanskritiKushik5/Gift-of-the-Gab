@@ -32,15 +32,6 @@ class HistoryAPIView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-    # def get_object(self):
-    #     try:
-    #         obj = History.objects.get()
-    #         self.check_object_permissions(self.request, obj)
-    #         return obj
-    #     except History.DoesNotExist:
-    #         raise Http404
-
     def get(self, request, format=None):
         data = History.objects.all()
         serializer = self.serializer_class(data, many=True)
@@ -67,23 +58,23 @@ class CountAPIView(APIView):
     serializer_class = ExerciseCountSerializer
     # permission_classes = [IsAuthenticated, IsOwner]
 
-    def get_object(self, pk):
+    def get_object(self, id):
         try:
-            obj = ExerciseCount.objects.get(pk=pk)
+            obj = ExerciseCount.objects.get(customer=id)
             self.check_object_permissions(self.request, obj)
             return obj
-        except History.DoesNotExist:
+        except ExerciseCount.DoesNotExist:
             raise Http404
 
-    def get(self, request, pk, format=None):
-        serializer = self.serializer_class(self.get_object(pk))
+    def get(self, request, id, format=None):
+        serializer = self.serializer_class(self.get_object(id))
         serialized_data = serializer.data
         return Response(serialized_data, status=status.HTTP_200_OK)
 
-    def put(self, request, pk, format=None):
-        customer = self.get_object(pk)
+    def put(self, request, id, format=None):
+        count = self.get_object(id)
         serializer = self.serializer_class(
-            customer, data=request.data, context={"request": request}
+            count, data=request.data, context={"request": request}
         )
         if serializer.is_valid():
             serializer.save()
@@ -128,6 +119,7 @@ class StreaksAPIView(APIView):
         serializer = self.serializer_class(data, many=True)
         serialized_data = serializer.data
         return Response(serialized_data, status=status.HTTP_200_OK)
+
 class HistoryDetailsAPIView(APIView):
     serializer_class = HistorySerializer
 

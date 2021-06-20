@@ -20,7 +20,6 @@ function Audioinput({customer}) {
   })
   const { id } = useParams();
   const audioRef = useRef()
-
   const onChange = (e) => {
     const audio = audioRef.current
     audio.currentTime = (audio.duration / 100) * e.target.value
@@ -49,8 +48,6 @@ function Audioinput({customer}) {
     setPercentage(+percent)
     setCurrentTime(time.toFixed(2))
   }
-
-  
   useEffect(() => {
     loadCard();
   }, []);
@@ -59,7 +56,7 @@ function Audioinput({customer}) {
     setCard(result.data);
   }
   const postCount = async () => {
-    const result = await axios.post(`http://127.0.0.1:8000/api/count_add/`, {
+    await axios.post(`http://127.0.0.1:8000/api/count_add/`, {
         count: 1,
         customer: customer,
     });
@@ -69,20 +66,19 @@ function Audioinput({customer}) {
       count: x+1,
       customer: customer,
     })
-    const result = await axios.put(`http://127.0.0.1:8000/api/count/${customer}/`, count);
+    await axios.put(`http://127.0.0.1:8000/api/count/${customer}/`, count);
   }
-  const loadCount = () => {
+  const loadCount = async () => {
     fetch(`http://127.0.0.1:8000/api/count/${customer}`, {method: "GET"})
     .then(async response => {
       const data = await response.json();
       if (response.ok) {
         x = data.count;
         putCount(x);
-      }
-    })
-    .catch((err) => {
+      }else{
         postCount();
-    })
+      }
+    });
   }
   const onSubmit = async (e) => {
 		e.preventDefault();
