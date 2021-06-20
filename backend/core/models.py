@@ -45,7 +45,7 @@ class custom_booleanfield(models.BooleanField):
 class Streaks(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    day_count=custom_booleanfield()
+    day_count=models.BooleanField(default=False)
     def __str__(self):
         return self.date_time
 
