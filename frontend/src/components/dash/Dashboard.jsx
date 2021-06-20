@@ -4,8 +4,16 @@ import "./Dashboard.css";
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import axios from "axios";
 
 const dashboard=()  => {
+  axios.get('http://127.0.0.1:8000/api/streaks/')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
   return(<>
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
@@ -71,5 +79,6 @@ const dashboard=()  => {
 </>
   );
 };
+
 
 export default dashboard;

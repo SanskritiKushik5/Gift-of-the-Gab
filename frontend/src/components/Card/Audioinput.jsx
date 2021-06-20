@@ -4,8 +4,9 @@ import ControlPanel from '../Controls/ControlPanel'
 import Mic from './Mic'
 import {Col, Row, Card, Button, Form} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
 import axios from "axios";
+
+var x = 0;
 
 function Audioinput({customer}) {
   const [percentage, setPercentage] = useState(0)
@@ -13,9 +14,12 @@ function Audioinput({customer}) {
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [card, setCard] = useState({});
+  const [count, setCount] = useState({
+    count: 1,
+    customer: customer,
+  })
   const { id } = useParams();
   const audioRef = useRef()
-
   const onChange = (e) => {
     const audio = audioRef.current
     audio.currentTime = (audio.duration / 100) * e.target.value
@@ -44,8 +48,6 @@ function Audioinput({customer}) {
     setPercentage(+percent)
     setCurrentTime(time.toFixed(2))
   }
-
-  
   useEffect(() => {
     loadCard();
   }, []);
@@ -53,9 +55,39 @@ function Audioinput({customer}) {
     const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
     setCard(result.data);
   }
-
+  const postCount = async () => {
+    await axios.post(`http://127.0.0.1:8000/api/count_add/`, {
+        count: 1,
+        customer: customer,
+    });
+  }
+  const putCount = async (x) => {
+    setCount({
+      count: x+1,
+      customer: customer,
+    })
+    await axios.put(`http://127.0.0.1:8000/api/count/${customer}/`, count);
+  }
+  const loadCount = async () => {
+    fetch(`http://127.0.0.1:8000/api/count/${customer}`, {method: "GET"})
+    .then(async response => {
+      const data = await response.json();
+      if (response.ok) {
+        x = data.count;
+        putCount(x);
+      }else{
+        postCount();
+      }
+    });
+  }
   const onSubmit = async (e) => {
 		e.preventDefault();
+    var bool = true
+    await axios.post('http://127.0.0.1:8000/api/streaks/', {
+      customer: customer,
+      day_count: bool,
+    });
+
 		await axios.post('http://127.0.0.1:8000/api/history/', {
       exercise_name: card.exercise_name,
       thumbnail: `http://127.0.0.1:8000${card.thumbnail}`,
@@ -63,6 +95,7 @@ function Audioinput({customer}) {
       customer: customer,
       card_id: id,
     });
+    loadCount();
 	}
   return (
     <>

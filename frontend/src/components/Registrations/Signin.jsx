@@ -30,7 +30,7 @@ const Signin = () => {
             username:'',
             password:''
         })
-        history.push("/");
+        history.push("/dashboard");
 	}
 
     return (<>

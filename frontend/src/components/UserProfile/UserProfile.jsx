@@ -5,17 +5,18 @@ import axios from "axios";
 
 const UserProfile = ({details}) => {
     const [user, setUser] = useState({
-		username: details.username,
-		email: details.email,
-        first_name: details.first_name,
-        last_name: details.last_name,
-        date_of_birth: details.date_of_birth,
+		username: `${details.username}`,
+		email: `${details.email}`,
+        first_name: `${details.first_name}`,
+        last_name: `${details.last_name}`,
+        date_of_birth: `${details.date_of_birth}`,
 	});
 	const onInputChange = e => {
 		setUser({...user,[e.target.name]: e.target.value})
 	}
 	const onSubmit = async (e) => {
 		e.preventDefault();
+        console.log(user)
 		await axios.put(`http://127.0.0.1:8000/api/user_details/${details.id}/`, user);
         swal({
             title: "Profile Updated Successfully!",
@@ -41,12 +42,12 @@ const UserProfile = ({details}) => {
 
                     <Form.Group controlId="first_name">
                         <Form.Label>First Name</Form.Label>
-                        <Form.Control onChange={e => onInputChange(e)} name="first_name" type="fname" defaultValue={details.first_name}/>
+                        <Form.Control onChange={e => onInputChange(e)} name="first_name" type="first_name" defaultValue={details.first_name}/>
                     </Form.Group>
 
                     <Form.Group controlId="last_name">
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control onChange={e => onInputChange(e)} name="last_name" type="lname" defaultValue={details.last_name}/>
+                        <Form.Control onChange={e => onInputChange(e)} name="last_name" type="last_name" defaultValue={details.last_name}/>
                     </Form.Group>
 
                     <Form.Group controlId="date_of_birth">

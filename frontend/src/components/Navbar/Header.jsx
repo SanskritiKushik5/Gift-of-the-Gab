@@ -27,6 +27,9 @@ return (
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
+                        <LinkContainer to="/dashboard">
+                            <Nav.Link className="link">Dashboard</Nav.Link>
+                        </LinkContainer>
                         <LinkContainer to="/exercise">
                             <Nav.Link className="link">Exercise</Nav.Link>
                         </LinkContainer>
