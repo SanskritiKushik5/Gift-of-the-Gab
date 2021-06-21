@@ -82,11 +82,18 @@ function Audioinput({customer}) {
   }
   const onSubmit = async (e) => {
 		e.preventDefault();
+    var bool = true
+    await axios.post('http://127.0.0.1:8000/api/weekstreak/', {
+      customer: customer,
+      day_count: bool,
+    });
+
 		await axios.post('http://127.0.0.1:8000/api/history/', {
       exercise_name: card.exercise_name,
       thumbnail: `http://127.0.0.1:8000${card.thumbnail}`,
       description: card.description,
       customer: customer,
+      card_id: id,
     });
     loadCount();
 	}

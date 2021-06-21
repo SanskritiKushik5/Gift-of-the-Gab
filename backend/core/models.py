@@ -1,6 +1,5 @@
 from django.db import models
 from accounts.models import Customer
-from datetime import datetime
 
 class Card(models.Model):
     exercise_name = models.CharField(max_length=500)
@@ -26,7 +25,10 @@ class History(models.Model):
 
 class ExerciseCount(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    count = models.IntegerField(default=0)
+    count = models.IntegerField()
+
+    # def __str__(self):
+    #     return self.customer
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
@@ -34,18 +36,12 @@ class Contact(models.Model):
     message = models.TextField()
 
     def __str__(self):
-        return self.name
+        return self.name 
 
-class custom_booleanfield(models.BooleanField):
-    def reset_day(self,obj):
-        val=self.value_from_object(obj)
-        if (datetime.now() - pastDate).days > 1:
-            val=False
-
-class Streaks(models.Model):
+class Weekstreak(models.Model):
     date_time = models.DateTimeField(auto_now_add=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    day_count=models.BooleanField(default=False)
-    def __str__(self):
-        return self.date_time
-
+    day_count = models.BooleanField()
+    
+    # def __str__(self):
+    #     return self.date_time

@@ -21,6 +21,28 @@ const History = () => {
 
     }
     
+    var fhistory = [];
+
+    var fhistory = [];
+
+    history.forEach(function(item) {
+      var existing = fhistory.filter(function(v, i) {
+        return v.card_id == item.card_id;
+      });
+      if (existing.length) {
+        var existingIndex = fhistory.indexOf(existing[0]);
+        fhistory[existingIndex].date_time = item.date_time.slice(0,10) +" "+ item.date_time.slice(11,16);
+      } else {
+        if (typeof item.date_time == 'string')
+          item.date_time = [item.date_time];
+          item.date_time = item.date_time.slice(0,10) +" "+ item.date_time.slice(11,16)
+        fhistory.push(item);
+      }
+    });
+    
+    console.dir(fhistory);
+
+console.dir(fhistory);
 
     return (
         <div>
@@ -32,11 +54,11 @@ const History = () => {
                     <h1 className="display-2">{count} </h1><h3>Total Exercises Done</h3>
                 </div>
             </div>
-            <div className="col-8 mx-auto">
+            <div className="col-9 mx-auto">
                 <div className="container-fluid">
-                    <h2 align="center">Jan 2021</h2>
+                    <h2 align="center">Recent Activities</h2>
                     <br></br>
-                    {history.map((history)=>(
+                    {fhistory.map((history)=>(
                          <Hcard history={history}/>
                     ))}
                                         {/* <Card>

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Card, History, ExerciseCount, Contact
+from .models import Card, History, ExerciseCount, Contact, Weekstreak
 
 class CardSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,4 +19,9 @@ class ExerciseCountSerializer(serializers.ModelSerializer):
 class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
+        fields = "__all__"
+
+class WeekstreakSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Weekstreak
         fields = "__all__"
