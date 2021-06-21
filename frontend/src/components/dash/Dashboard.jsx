@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import axios from "axios";
 
 const dashboard=()  => {
-  axios.get('http://127.0.0.1:8000/api/streaks/')
+  axios.get('http://127.0.0.1:8000/api/weekstreak/')
   .then(function (response) {
     console.log(response);
   })

@@ -83,7 +83,7 @@ function Audioinput({customer}) {
   const onSubmit = async (e) => {
 		e.preventDefault();
     var bool = true
-    await axios.post('http://127.0.0.1:8000/api/streaks/', {
+    await axios.post('http://127.0.0.1:8000/api/weekstreak/', {
       customer: customer,
       day_count: bool,
     });
