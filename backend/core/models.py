@@ -43,5 +43,5 @@ class Weekstreak(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     day_count = models.BooleanField()
     
-    def __str__(self):
-        return self.date_time
+    # def __str__(self):
+    #     return self.date_time
