@@ -5,6 +5,7 @@ import Mic from './Mic'
 import {Col, Row, Card, Button, Form} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import swal from 'sweetalert';
 
 var x = 0;
 
@@ -96,6 +97,11 @@ function Audioinput({customer}) {
       card_id: id,
     });
     loadCount();
+    swal({
+      title: "Submitted Successfully!",
+      text: "Well done! Keep Practicing!",
+      icon: "success",
+    });
 	}
   return (
     <>

@@ -4,34 +4,50 @@ import "./Dashboard.css";
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useState, useEffect } from 'react'
 import axios from "axios";
 
-const dashboard=()  => {
-  axios.get('http://127.0.0.1:8000/api/weekstreak/')
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
+const Dashboard=()  => {
+
+  const [weekstreak, setWeekstreak] = useState([]);
+
+  useEffect(() => {
+    loadWeekstreak();
+  }, []);
+  const loadWeekstreak = async () => {
+    const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak`);
+    setWeekstreak(result.data);
+  }
+
+  console.log(weekstreak)
+  weekstreak.forEach(function(item) {
+    item.date_time = item.date_time.slice(0,10)
   });
+
+  console.log(weekstreak)
+  var today = new Date();
+  const ftoday = JSON.stringify(today).slice(1,11);
+  console.log(ftoday)
+
+  // axios.get('http://127.0.0.1:8000/api/weekstreak/')
+  // .then(function (response) {
+  //   console.log(response);
+  // })
+  // .catch(function (error) {
+  //   console.log(error);
+  // });
+
   return(<>
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
-  <button type="button" class="btn btn-circle btn-xl">
-   Sun</button>
-  <button type="button" class="btn btn-circle btn-xl">
-   Mon</button>
-  <button type="button" class="btn btn-circle btn-xl">
-   Tu</button>
-  <button type="button" class="btn btn-circle btn-xl">
-   Wed</button>
-  <button type="button" class="btn btn-circle btn-xl">
-   Thu</button>
-  <button type="button" class="btn btn-circle btn-xl">
-   Fri</button>
-  <button type="button" class="btn btn-circle btn-xl">
-   Sat</button>
+  <button type="button" class="btn btn-circle btn-xl">Sun</button>
+  <button type="button" class="btn btn-circle btn-xl">Mon</button>
+  <button type="button" class="btn btn-circle btn-xl">Tu</button>
+  <button type="button" class="btn btn-circle btn-xl">Wed</button>
+  <button type="button" class="btn btn-circle btn-xl">Thu</button>
+  <button type="button" class="btn btn-circle btn-xl">Fri</button>
+  <button type="button" class="btn btn-circle btn-xl">Sat</button>
 </center>
 <div className="card">
 <Row>
@@ -81,4 +97,4 @@ const dashboard=()  => {
 };
 
 
-export default dashboard;
+export default Dashboard;

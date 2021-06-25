@@ -5,11 +5,11 @@ import axios from "axios";
 
 const UserProfile = ({details}) => {
     const [user, setUser] = useState({
-		username: `${details.username}`,
-		email: `${details.email}`,
-        first_name: `${details.first_name}`,
-        last_name: `${details.last_name}`,
-        date_of_birth: `${details.date_of_birth}`,
+		username: details.username,
+		email: details.email,
+        first_name: details.first_name,
+        last_name: details.last_name,
+        date_of_birth: details.date_of_birth,
 	});
 	const onInputChange = e => {
 		setUser({...user,[e.target.name]: e.target.value})
@@ -52,7 +52,7 @@ const UserProfile = ({details}) => {
 
                     <Form.Group controlId="date_of_birth">
                         <Form.Label>Date Of Birth</Form.Label>
-                        <Form.Control onChange={e => onInputChange(e)} name="date_of_birth" type="date" defaultValue={details.date_of_birth}/>
+                        <Form.Control onChange={e => onInputChange(e)} name="date_of_birth" defaultValue={details.date_of_birth}/>
                     </Form.Group>
 
                     <center> 
