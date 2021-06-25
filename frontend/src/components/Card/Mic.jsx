@@ -63,6 +63,7 @@ class Mic extends React.Component {
         <div className="container rec">
           <AudioReactRecorder
             className="audio-rec"
+            type="audio/mpeg"
             state={recordState}
             onStop={this.onStop}
             backgroundColor='rgb(255,255,255)'

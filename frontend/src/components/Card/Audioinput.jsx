@@ -10,6 +10,9 @@ import swal from 'sweetalert';
 var x = 0;
 
 function Audioinput({customer}) {
+
+  window.scrollTo(0, 0)
+
   const [percentage, setPercentage] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
@@ -146,8 +149,8 @@ function Audioinput({customer}) {
         <h3 align="center">- Start Recording -</h3>
         <p align="center">Follow the instructions and attempt the exercise by starting the recorder...</p>
       </div>
+      <Mic />
       <Form onSubmit={e => onSubmit(e)}>
-        <Mic />
         <center>
         <Button variant="primary" type="submit" className="btn x">Submit Recording</Button>
         </center>

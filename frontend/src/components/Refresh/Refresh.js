@@ -1,10 +1,10 @@
 import { Component } from 'react';
 import { withRouter } from 'react-router';
 
-class ScrollToTop extends Component {
+class Refresh extends Component {
   componentDidUpdate(prevProps) {
     if (this.props.location !== prevProps.location) {
-      window.scrollTo(0, 0)
+      window.location.reload();
     }
   }
 
@@ -13,4 +13,4 @@ class ScrollToTop extends Component {
   }
 }
 
-export default withRouter(ScrollToTop)
+export default withRouter(Refresh)

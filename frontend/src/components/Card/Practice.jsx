@@ -2,6 +2,8 @@ import React from "react";
 import Card from "./Card";
 
 const Practice=({cards})  => {
+
+  window.scrollTo(0, 0)
     return(
     <div className="my-5">
       <h3 className="display-6" align="center"><strong>- Exercises -</strong></h3>
