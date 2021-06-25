@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop,Dashboard, UserProfile} from './components';
+import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop, Refresh, Dashboard, UserProfile} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from "axios";
 // import { tokenConfig } from "./auth";
@@ -37,9 +37,9 @@ function App() {
   }
   return (
     <Router>
-     <ScrollToTop>
       <div className="app">
         <Switch>
+          <Refresh>
           <Route exact path="/">
             <Header details={details} />
             <Welcome />
@@ -54,11 +54,13 @@ function App() {
             <Contact />
             <Footer />
           </Route>
+          <ScrollToTop>
           <Route exact path="/exercise">
             <Header details={details}/>
             <Practice cards={cards}/>
             <Footer />
           </Route>
+          </ScrollToTop>
           <Route exact path="/audioinput/:id">
             <Header details={details} />
             <Audioinput customer={details.id}/>
@@ -89,9 +91,9 @@ function App() {
             <UserProfile details={details}/>
             <Footer />
           </Route>
+          </Refresh>
         </Switch>
       </div>
-     </ScrollToTop>
     </Router>
   );
 }

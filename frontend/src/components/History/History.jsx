@@ -14,15 +14,13 @@ const History = () => {
     }, []);
     const loadHistory = async () => {
         const result = await axios.get(`http://127.0.0.1:8000/api/history/${id}`);
+        // console.log(result[0])
+        setHistory(result.data);
         const output = await axios.get(`http://127.0.0.1:8000/api/count/${id}`);
         count = output.data["count"];
-        console.log(result[0])
-        setHistory(result.data);
 
     }
     
-    var fhistory = [];
-
     var fhistory = [];
 
     history.forEach(function(item) {
@@ -41,8 +39,6 @@ const History = () => {
     });
     
     console.dir(fhistory);
-
-console.dir(fhistory);
 
     return (
         <div>

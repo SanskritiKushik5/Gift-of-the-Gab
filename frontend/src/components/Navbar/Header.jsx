@@ -19,7 +19,6 @@ const Header = ({details}) => {
 return (
         <>
         {/* <CheckAuth /> */}
-        <meta http-equiv="refresh"/>
             <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
                 <LinkContainer to="/">
                     <Navbar.Brand className="ml-xs-2 app-name">Gift of the Gab</Navbar.Brand>
@@ -48,9 +47,9 @@ return (
                                     <a href="#" className="dd">Logout</a>
                                 </div>
                         </div>
-                        </Nav>
-                        </Navbar.Collapse>
-                        </Navbar>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         </>
     )
 }
@@ -80,7 +79,7 @@ else{
                             </LinkContainer>
                         </Nav>
                     </Navbar.Collapse>
-                    </Navbar>
+                </Navbar>
             </>
         )
 }

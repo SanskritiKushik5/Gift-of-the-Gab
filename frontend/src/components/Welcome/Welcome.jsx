@@ -4,6 +4,7 @@ import img from '../Images/welcome-page.jpg';
 import "./Welcome.css";
 
 const Welcome = () => {
+    window.scrollTo(0, 0)
     return (
         <Container>
             <Row>
