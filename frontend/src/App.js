@@ -8,9 +8,11 @@ import axios from "axios";
 
 function App() {
   const [cards, setCards] = useState([]);
-  const [details, setDetails] = useState([]);
+  const [details, setDetails] = useState({});
   const [historys, setHistorys] = useState([]);
-
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  } 
   useEffect(() => {
     loadCards();
     loadDetails();
@@ -70,6 +72,7 @@ function App() {
             <Footer />
           </Route>
           <Route exact path="/dashboard">
+          
             <Header details={details}/>
             <Dashboard />
             <Footer />

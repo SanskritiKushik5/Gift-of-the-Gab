@@ -16,9 +16,11 @@ const Header = ({details}) => {
 
     var active = details.is_active
     if(active===true){
+        
 return (
         <>
         {/* <CheckAuth /> */}
+        
         <meta http-equiv="refresh"/>
             <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
                 <LinkContainer to="/">
