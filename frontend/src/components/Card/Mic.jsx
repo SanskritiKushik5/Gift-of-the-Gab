@@ -36,6 +36,9 @@ class Mic extends React.Component {
       audioData: data
     })
     console.log('onStop: audio data', data)
+    console.log(data, data.url)
+    const aud = data.url
+    localStorage.setItem('audio',aud)
   }
 
   render() {
