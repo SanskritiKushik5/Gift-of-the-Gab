@@ -45,3 +45,10 @@ class Weekstreak(models.Model):
     
     # def __str__(self):
     #     return self.date_time
+
+class AudioData(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    input_audio = models.URLField(max_length=500, default="")
+    output_audio = models.TextField(max_length=1500, default="")
+    card_id = models.IntegerField(default=0)
+

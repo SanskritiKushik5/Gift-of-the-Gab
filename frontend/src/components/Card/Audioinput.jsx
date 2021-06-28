@@ -84,8 +84,19 @@ function Audioinput({customer}) {
       }
     });
   }
+
   const onSubmit = async (e) => {
 		e.preventDefault();
+    var aud = localStorage.getItem('audio')
+    console.log(aud)
+
+    await axios.post('http://127.0.0.1:8000/api/audiodata/', {
+      input_audio: `http://127.0.0.1:8000${card.audio}`,
+      output_audio: aud,
+      customer: customer,
+      card_id: id,
+    });
+
     var bool = true
     await axios.post('http://127.0.0.1:8000/api/weekstreak/', {
       customer: customer,
@@ -99,6 +110,7 @@ function Audioinput({customer}) {
       customer: customer,
       card_id: id,
     });
+
     loadCount();
     swal({
       title: "Submitted Successfully!",

@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from .models import Card, History, ExerciseCount, Contact, Weekstreak
-from .serializers import CardSerializer, HistorySerializer, ExerciseCountSerializer, ContactSerializer, WeekstreakSerializer
+from .serializers import CardSerializer, HistorySerializer, ExerciseCountSerializer, ContactSerializer, WeekstreakSerializer, AudioDataSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from rest_framework.permissions import IsAuthenticated
 from core.permissions import IsOwner
-from datetime import datetime, timedelta
 
 class CardAPIView(APIView):
     serializer_class = CardSerializer
@@ -142,6 +141,17 @@ class WeekStreakAPIView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def handle(self, *args, **options):
-        Weekstreak.objects.filter(date_time__lte=datetime.now()-timedelta(minutes=1)).delete()
-        self.stdout.write('Deleted objects older than 1 minute')
+class AudioDataAPIView(APIView):
+    serializer_class = AudioDataSerializer
+
+    def post(self, request, format=None):
+        serializer = self.serializer_class(
+            data=request.data, context={"request": request}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            serialized_data = serializer.data
+            return Response(serialized_data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
