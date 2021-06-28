@@ -18,7 +18,14 @@ h3{
     line-height: 1.33;
     margin-right: 40px;
     margin-bottom: 20px;
+    background-color: #001457;
 }
+
+.btn-circle.btn-xl:hover{
+    background-color: #001457;
+    color: #ffffff;
+}
+
 .button {
     width: 30px;
     height: 90px;
@@ -29,7 +36,7 @@ h3{
     line-height: 1.42857;
 }
 
-span.step {
+/* span.step {
     background: #ccc;
     border-radius: 0.8em;
     -moz-border-radius: 0.8em;
@@ -41,4 +48,4 @@ span.step {
     margin-right: 5px;
     text-align: center;
     width: 1.6em; 
-  }
+  } */

@@ -10,6 +10,7 @@ import axios from "axios";
 const Dashboard=()  => {
 
   const [weekstreak, setWeekstreak] = useState([]);
+  const [active1, setActive1] = useState(false);
 
   useEffect(() => {
     loadWeekstreak();
@@ -19,15 +20,25 @@ const Dashboard=()  => {
     setWeekstreak(result.data);
   }
 
-  console.log(weekstreak)
-  weekstreak.forEach(function(item) {
-    item.date_time = item.date_time.slice(0,10)
-  });
-
-  console.log(weekstreak)
   var today = new Date();
+  const fday = today.getDay();
   const ftoday = JSON.stringify(today).slice(1,11);
-  console.log(ftoday)
+  console.log("Date", ftoday, "Day", fday)
+
+  const toggle1 = () => {
+    weekstreak.forEach(function(item) {
+      item.date_time = item.date_time.slice(0,10)
+      console.log(item.date_time)
+      if (item.date_time === ftoday) {
+        console.log("hey we entered the if")
+        setActive1(true);
+      }
+    });
+  };
+    
+
+    // console.log(isDone)
+
 
   // axios.get('http://127.0.0.1:8000/api/weekstreak/')
   // .then(function (response) {
@@ -41,13 +52,13 @@ const Dashboard=()  => {
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
-  <button type="button" class="btn btn-circle btn-xl">Sun</button>
-  <button type="button" class="btn btn-circle btn-xl">Mon</button>
-  <button type="button" class="btn btn-circle btn-xl">Tu</button>
-  <button type="button" class="btn btn-circle btn-xl">Wed</button>
-  <button type="button" class="btn btn-circle btn-xl">Thu</button>
-  <button type="button" class="btn btn-circle btn-xl">Fri</button>
-  <button type="button" class="btn btn-circle btn-xl">Sat</button>
+  <button type="button" id="1" onLoad={toggle1} color={active1 ? 'primary': 'info'} className="btn btn-circle btn-xl">Mon</button>
+  <button type="button" id="2" className="btn btn-circle btn-xl">Tue</button>
+  <button type="button" id="3" className="btn btn-circle btn-xl">Wed</button>
+  <button type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
+  <button type="button" id="5" className="btn btn-circle btn-xl">Fri</button>
+  <button type="button" id="6" className="btn btn-circle btn-xl">Sat</button>
+  <button type="button" id="7" className="btn btn-circle btn-xl">Sun</button>
 </center>
 <div className="card">
 <Row>
