@@ -4,21 +4,21 @@ import axios from "axios";
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import Hcard from "./Hcard";
-var count = 0;
+
 const History = () => {
     const [history, setHistory] = useState([]);
     const { id } = useParams();
+    const [count, setCount] = useState([]);
 
     useEffect(() => {
         loadHistory();
     }, []);
     const loadHistory = async () => {
         const result = await axios.get(`http://127.0.0.1:8000/api/history/${id}`);
-        // console.log(result[0])
         setHistory(result.data);
         const output = await axios.get(`http://127.0.0.1:8000/api/count/${id}`);
-        count = output.data["count"];
-
+        setCount(output.data);
+        
     }
     
     var fhistory = [];
@@ -37,8 +37,6 @@ const History = () => {
         fhistory.push(item);
       }
     });
-    
-    console.dir(fhistory);
 
     return (
         <div>
@@ -47,7 +45,7 @@ const History = () => {
                     <h1 className="display-2">450 </h1><h3>Total Minutes Spent</h3>
                 </div> */}
                 <div className="container-fluid order-2 col-6 count-right">
-                    <h1 className="display-2">{count} </h1><h3>Total Exercises Done</h3>
+                    <h1 className="display-2">{count.count}</h1><h3>Total Exercises Done</h3>
                 </div>
             </div>
             <div className="col-9 mx-auto">
