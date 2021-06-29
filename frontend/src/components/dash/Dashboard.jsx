@@ -7,7 +7,7 @@ import Col from 'react-bootstrap/Col';
 import { useState, useEffect } from 'react'
 import axios from "axios";
 
-const Dashboard=()  => {
+const Dashboard=({details})  => {
 
   const [weekstreak, setWeekstreak] = useState([]);
   const [active1, setActive1] = useState(false);
@@ -16,7 +16,8 @@ const Dashboard=()  => {
     loadWeekstreak();
   }, []);
   const loadWeekstreak = async () => {
-    const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak`);
+    console.log(details.id)
+    const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak/${details.id}`);
     setWeekstreak(result.data);
   }
 

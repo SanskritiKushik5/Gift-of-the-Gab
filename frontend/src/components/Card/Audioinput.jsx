@@ -18,10 +18,10 @@ function Audioinput({customer}) {
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [card, setCard] = useState({});
-  const [count, setCount] = useState({
-    count: 1,
-    customer: customer,
-  })
+  // const [count, setCount] = useState({
+  //   count: 1,
+  //   customer: customer,
+  // })
   const { id } = useParams();
   const audioRef = useRef()
   const onChange = (e) => {
@@ -66,11 +66,14 @@ function Audioinput({customer}) {
     });
   }
   const putCount = async (x) => {
-    setCount({
-      count: x+1,
-      customer: customer,
-    })
-    await axios.put(`http://127.0.0.1:8000/api/count/${customer}/`, count);
+    // setCount({
+    //   customer: customer,
+    //   count: x,
+    // })
+    await axios.put(`http://127.0.0.1:8000/api/count/${customer}/`, {
+      count: x,
+      customer: customer
+    });
   }
   const loadCount = async () => {
     fetch(`http://127.0.0.1:8000/api/count/${customer}`, {method: "GET"})
@@ -78,7 +81,7 @@ function Audioinput({customer}) {
       const data = await response.json();
       if (response.ok) {
         x = data.count;
-        putCount(x);
+        putCount(x+1);
       }else{
         postCount();
       }

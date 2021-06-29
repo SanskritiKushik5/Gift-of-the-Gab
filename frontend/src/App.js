@@ -73,7 +73,7 @@ function App() {
           </Route>
           <Route exact path="/dashboard">
             <Header details={details}/>
-            <Dashboard />
+            <Dashboard details={details}/>
             <Footer />
           </Route>
           <Route exact path="/signup">
