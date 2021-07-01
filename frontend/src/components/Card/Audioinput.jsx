@@ -8,7 +8,6 @@ import axios from "axios";
 import swal from 'sweetalert';
 
 var x = 0;
-
 function Audioinput({customer}) {
 
   window.scrollTo(0, 0)
@@ -66,9 +65,10 @@ function Audioinput({customer}) {
     });
   }
   const putCount = async (x) => {
+    console.log(customer)
     // setCount({
-    //   customer: customer,
     //   count: x,
+    //   customer: customer,
     // })
     await axios.put(`http://127.0.0.1:8000/api/count/${customer}/`, {
       count: x,

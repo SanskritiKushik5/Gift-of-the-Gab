@@ -13,12 +13,12 @@ const History = () => {
     useEffect(() => {
         loadHistory();
     }, []);
+    
     const loadHistory = async () => {
         const result = await axios.get(`http://127.0.0.1:8000/api/history/${id}`);
         setHistory(result.data);
         const output = await axios.get(`http://127.0.0.1:8000/api/count/${id}`);
         setCount(output.data);
-        
     }
     
     var fhistory = [];

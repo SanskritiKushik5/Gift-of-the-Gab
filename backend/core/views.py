@@ -134,6 +134,12 @@ class WeekStreakAPIView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+    def get(self, request, format=None):
+        data = Weekstreak.objects.all()
+        serializer = self.serializer_class(data, many=True)
+        serialized_data = serializer.data
+        return Response(serialized_data, status=status.HTTP_200_OK)
+
 class WeekStreakDetailsAPIView(APIView):
     serializer_class = WeekstreakSerializer
 

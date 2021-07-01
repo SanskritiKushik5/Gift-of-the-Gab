@@ -4,18 +4,24 @@ import { Avatar} from "@material-ui/core";
 import "./Header.css"
 import { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 // import CheckAuth from '../CheckAuth/CheckAuth'
 
 const Header = ({details}) => {
     const [seed, setSeed] = useState('');
-
+    const history = useHistory();
     useEffect(() =>{
         setSeed(Math.floor(Math.random() * 50) );
     });
+    const logout = async() => {
+        await axios.post("http://127.0.0.1:8000/api/logout/");
+        history.push('/');
+    }
 
     var active = details.is_active
     if(active===true){
+        
 return (
         <>
         {/* <CheckAuth /> */}
@@ -26,7 +32,7 @@ return (
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <LinkContainer to="/dashboard">
+                        <LinkContainer to={`/dashboard/${details.id}`}>
                             <Nav.Link className="link">Dashboard</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/exercise">
@@ -43,8 +49,13 @@ return (
                         <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/jdenticon/${seed}.svg`}/></Nav.Link>
                                 <div class="dropdown-content">
                                 
-                                    <a href="/userprofile" className="dd">Profile</a>
-                                    <a href="#" className="dd">Logout</a>
+                                <LinkContainer to={`/userprofile/${details.id}`}>
+                                    <Nav.Link className="dd">Profile</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/">
+                                    <Nav.Link className="dd">Logout</Nav.Link>
+                                </LinkContainer>
+                    
                                 </div>
                         </div>
                     </Nav>
