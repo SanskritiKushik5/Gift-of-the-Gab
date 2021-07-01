@@ -73,10 +73,9 @@ function App() {
             <History />
             <Footer />
           </Route>
-          <Route exact path="/dashboard">
-          
+          <Route exact path="/dashboard/:id">
             <Header details={details}/>
-            <Dashboard />
+            <Dashboard details={details}/>
             <Footer />
           </Route>
           <Route exact path="/signup">
@@ -86,10 +85,10 @@ function App() {
           </Route>
           <Route exact path="/signin">
             <Header details={details} />
-            <Signin />
+            <Signin details={details} />
             <Footer />
           </Route>
-          <Route exact path="/userprofile">
+          <Route exact path="/userprofile/:id">
             <Header details={details}/>
             <UserProfile details={details}/>
             <Footer />

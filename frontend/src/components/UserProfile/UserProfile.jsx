@@ -2,14 +2,17 @@ import {React, useState, useEffect} from 'react';
 import {Button, Container, Form} from 'react-bootstrap';
 import swal from 'sweetalert';
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const UserProfile = ({details}) => {
+    const { id } = useParams();
+
     const [user, setUser] = useState({
-		username: details.username,
-		email: details.email,
-        first_name: details.first_name,
-        last_name: details.last_name,
-        date_of_birth: details.date_of_birth,
+		username: `${details.username}`,
+		email: `${details.email}`,
+        first_name: `${details.first_name}`,
+        last_name: `${details.last_name}`,
+        date_of_birth: `${details.date_of_birth}`,
 	});
 	const onInputChange = e => {
 		setUser({...user,[e.target.name]: e.target.value})
@@ -17,7 +20,7 @@ const UserProfile = ({details}) => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
         console.log(user)
-		await axios.put(`http://127.0.0.1:8000/api/user_details/${details.id}/`, user);
+		await axios.put(`http://127.0.0.1:8000/api/user_details/${id}/`, user);
         swal({
             title: "Profile Updated Successfully!",
             icon: "success",

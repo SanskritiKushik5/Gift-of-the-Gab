@@ -17,10 +17,10 @@ function Audioinput({customer}) {
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [card, setCard] = useState({});
-  const [count, setCount] = useState({
-    count: 1,
-    customer: customer,
-  })
+  // const [count, setCount] = useState({
+  //   count: 1,
+  //   customer: customer,
+  // })
   const { id } = useParams();
   const audioRef = useRef()
   const onChange = (e) => {

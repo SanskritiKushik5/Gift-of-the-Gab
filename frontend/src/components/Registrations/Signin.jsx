@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import "./Signup.css";
 import axios from 'axios';
 
-const Signin = () => {
+const Signin = ({details}) => {
 
     let history = useHistory();
 
@@ -30,7 +30,7 @@ const Signin = () => {
             username:'',
             password:''
         })
-        history.push("/dashboard");
+        history.push(`/dashboard/${details.id}`);
 	}
 
     return (<>

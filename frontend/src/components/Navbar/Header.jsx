@@ -32,7 +32,7 @@ return (
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <LinkContainer to="/dashboard">
+                        <LinkContainer to={`/dashboard/${details.id}`}>
                             <Nav.Link className="link">Dashboard</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/exercise">
@@ -49,8 +49,13 @@ return (
                         <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/jdenticon/${seed}.svg`}/></Nav.Link>
                                 <div class="dropdown-content">
                                 
-                                    <a href="/userprofile" className="dd">Profile</a>
-                                    <a href="#" className="dd" onClick={logout}>Logout</a>
+                                <LinkContainer to={`/userprofile/${details.id}`}>
+                                    <Nav.Link className="dd">Profile</Nav.Link>
+                                </LinkContainer>
+                                <LinkContainer to="/">
+                                    <Nav.Link className="dd">Logout</Nav.Link>
+                                </LinkContainer>
+                    
                                 </div>
                         </div>
                     </Nav>

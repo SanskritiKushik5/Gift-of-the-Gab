@@ -5,18 +5,21 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useState, useEffect } from 'react'
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const Dashboard=()  => {
 
-  const [weekstreak, setWeekstreak] = useState([]);
+  const [weekstreak, setWeekstreak] = useState({});
   const [active1, setActive1] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
     loadWeekstreak();
   }, []);
+
   const loadWeekstreak = async () => {
-    const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak`);
+    const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak/${id}`);
     setWeekstreak(result.data);
   }
 
@@ -35,24 +38,12 @@ const Dashboard=()  => {
       }
     });
   };
-    
-
-    // console.log(isDone)
-
-
-  // axios.get('http://127.0.0.1:8000/api/weekstreak/')
-  // .then(function (response) {
-  //   console.log(response);
-  // })
-  // .catch(function (error) {
-  //   console.log(error);
-  // });
 
   return(<>
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
-  <button type="button" id="1" onLoad={toggle1} color={active1 ? 'primary': 'info'} className="btn btn-circle btn-xl">Mon</button>
+  <button type="button" id="1" className="btn btn-circle btn-xl">Mon</button>
   <button type="button" id="2" className="btn btn-circle btn-xl">Tue</button>
   <button type="button" id="3" className="btn btn-circle btn-xl">Wed</button>
   <button type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
