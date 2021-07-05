@@ -10,17 +10,18 @@ import { useHistory } from "react-router-dom";
 
 const Header = ({details}) => {
     const [seed, setSeed] = useState('');
+    const [active, setActive] = useState(1);
     const history = useHistory();
     useEffect(() =>{
         setSeed(Math.floor(Math.random() * 50) );
     });
     const logout = async() => {
         await axios.post("http://127.0.0.1:8000/api/logout/");
+        setActive(0);
         history.push('/');
     }
-
-    var active = details.is_active
-    if(active===true){
+    // var active = details.is_active
+    if(active){
         
 return (
         <>
