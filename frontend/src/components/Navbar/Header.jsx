@@ -10,18 +10,17 @@ import { useHistory } from "react-router-dom";
 
 const Header = ({details}) => {
     const [seed, setSeed] = useState('');
-    const [active, setActive] = useState(1);
     const history = useHistory();
-    useEffect(() =>{
+    useEffect(() => {
         setSeed(Math.floor(Math.random() * 50) );
     });
     const logout = async() => {
         await axios.post("http://127.0.0.1:8000/api/logout/");
-        setActive(0);
-        history.push('/');
+        history.push('/signin');
+        console.log("history pushed")
     }
     // var active = details.is_active
-    if(active){
+    if(details.is_active){
         
 return (
         <>
@@ -33,7 +32,7 @@ return (
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <LinkContainer to={`/dashboard/${details.id}`}>
+                        <LinkContainer to="/dashboard">
                             <Nav.Link className="link">Dashboard</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/exercise">
