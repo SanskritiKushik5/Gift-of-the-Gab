@@ -49,13 +49,8 @@ return (
                         <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/jdenticon/${seed}.svg`}/></Nav.Link>
                                 <div class="dropdown-content">
                                 
-                                <LinkContainer to={`/userprofile/${details.id}`}>
-                                    <Nav.Link className="dd">Profile</Nav.Link>
-                                </LinkContainer>
-                                <LinkContainer to="/">
-                                    <Nav.Link className="dd">Logout</Nav.Link>
-                                </LinkContainer>
-                    
+                                    <a href={`/userprofile/${details.id}`} className="dd">Profile</a>
+                                    <a href="/" className="dd" onClick={logout}>Logout</a>
                                 </div>
                         </div>
                     </Nav>
