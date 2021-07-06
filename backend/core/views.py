@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from .models import Card, History, ExerciseCount, Contact, Weekstreak
-from .serializers import CardSerializer, HistorySerializer, ExerciseCountSerializer, ContactSerializer, WeekstreakSerializer, AudioDataSerializer
+from .serializers import CardSerializer, HistorySerializer, ExerciseCountSerializer, ContactSerializer, WeekstreakSerializer, AudioDataSerializer, OutputAudioSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
@@ -163,3 +163,16 @@ class AudioDataAPIView(APIView):
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
+class OutputAudioAPIView(APIView):
+    serializer_class = OutputAudioSerializer
+
+    def post(self, request, format=None):
+        serializer = self.serializer_class(
+            data=request.data, context={"request": request}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            serialized_data = serializer.data
+            return Response(serialized_data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

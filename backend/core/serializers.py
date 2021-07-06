@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Card, History, ExerciseCount, Contact, Weekstreak, AudioData
+from .models import Card, History, ExerciseCount, Contact, Weekstreak, AudioData, OutputAudio
 
 class CardSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,3 +31,7 @@ class AudioDataSerializer(serializers.ModelSerializer):
         model = AudioData
         fields = "__all__"
 
+class OutputAudioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OutputAudio
+        fields = "__all__"
