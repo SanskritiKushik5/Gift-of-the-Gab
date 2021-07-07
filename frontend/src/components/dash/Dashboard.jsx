@@ -8,14 +8,16 @@ import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const Dashboard=()  => {
+const Dashboard = ()  => {
 
-  const [weekstreak, setWeekstreak] = useState({});
-  const [active1, setActive1] = useState(false);
+  const [weekstreak, setWeekstreak] = useState([]);
+  const [active, setActive] = useState(false);
   const { id } = useParams();
 
+  console.log(id)
   useEffect(() => {
     loadWeekstreak();
+    toggle();
   }, []);
 
   const loadWeekstreak = async () => {
@@ -23,22 +25,23 @@ const Dashboard=()  => {
     setWeekstreak(result.data);
   }
 
+  console.log(weekstreak)
+
   var today = new Date();
   const fday = today.getDay();
   const ftoday = JSON.stringify(today).slice(1,11);
   console.log("Date", ftoday, "Day", fday)
 
-  const toggle1 = () => {
+  const toggle = () => {
     weekstreak.forEach(function(item) {
       item.date_time = item.date_time.slice(0,10)
       console.log(item.date_time)
       if (item.date_time === ftoday) {
         console.log("hey we entered the if")
-        setActive1(true);
+        setActive(true);
       }
     });
   };
-
   return(<>
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
