@@ -10,73 +10,50 @@ import axios from "axios";
 
 const Dashboard = ()  => {
 
-  const [weekstreak, setWeekstreak] = useState([]);
   const { id } = useParams();
-
-  var active = false
+  let streak = [];
+  var week = {};
+  const [active, setActive] = useState(false);
   var today = new Date();
-  const fday = today.getDay();
+  var fday = today.getDay();
   const ftoday = JSON.stringify(today).slice(1,11);
   console.log("Date", ftoday, "Day", fday)
-
+ 
   console.log(id)
   useEffect(() => {
     console.log("load weekstreak")
     loadWeekstreak();
   }, []);
-
-  useEffect(() => {
-    console.log("toggle")
-    toggle();
-  }, []);
-
   const loadWeekstreak = async () => {
     const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak/${id}`);
-    setWeekstreak(result.data);
-    // weekstreak.forEach(function(item) {
-    //   item.date_time = item.date_time.slice(0,10)
-    //   console.log(item.date_time)
-    //   if (item.date_time === ftoday) {
-    //     console.log("")
-    //     active = true;
-    //     console.log(active)
-    //   }
-    // });
-  }
-
-  console.log(weekstreak)
-
-  const toggle = () => {
-  console.log("heyy")
-   weekstreak.forEach(function(item) {
-   item.date_time = item.date_time.slice(0,10)
-   console.log(item.date_time)
-       if (item.date_time === ftoday) {
+    streak = result.data;
+    streak.forEach(function(item) {
+      item.date_time = item.date_time.slice(0,10)
+      console.log(item.date_time)
+      if (item.date_time === ftoday) {
         console.log("hey we entered the if")
-        active = true;
+        setActive(true)
         console.log(active)
        }
     });
-   };
+  }
 
-  console.log(weekstreak)
+  week[fday] = active;
+  console.log(week)
   console.log(active)
-
-  var week = {};
-  week.fday = active;
 
   return(<>
 
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
-  <button style={{backgroundColor: active? "#095a9d" : "#001457"}} type="button" id="1" className="btn btn-circle btn-xl">Mon</button>
-  <button type="button" id="2" className="btn btn-circle btn-xl">Tue</button>
-  <button type="button" id="3" className="btn btn-circle btn-xl">Wed</button>
-  <button type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
-  <button type="button" id="5" className="btn btn-circle btn-xl">Fri</button>
-  <button type="button" id="6" className="btn btn-circle btn-xl">Sat</button>
-  <button type="button" id="7" className="btn btn-circle btn-xl">Sun</button>
+  <button style={{backgroundColor: week[1]? "#001457" : "##095a9d"}} type="button" id="1" className="btn btn-circle btn-xl">Mon</button>
+  <button style={{backgroundColor: week[2]? "#001457" : "##095a9d"}} type="button" id="2" className="btn btn-circle btn-xl">Tue</button>
+  <button style={{backgroundColor: week[3]? "#001457" : "#095a9d"}} type="button" id="3" className="btn btn-circle btn-xl">Wed</button>
+  <button style={{backgroundColor: week[4]? "#001457" : "#095a9d"}} type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
+  <button style={{backgroundColor: week[5]? "#001457" : "#095a9d"}} type="button" id="5" className="btn btn-circle btn-xl">Fri</button>
+  <button style={{backgroundColor: week[6]? "#001457" : "#095a9d"}} type="button" id="6" className="btn btn-circle btn-xl">Sat</button>
+  <button style={{backgroundColor: week[0]? "#001457" : "#095a9d"}} type="button" id="0" className="btn btn-circle btn-xl">Sun</button>
 </center>
 
 <div className="card">
@@ -128,3 +105,4 @@ const Dashboard = ()  => {
 
 
 export default Dashboard;
+
