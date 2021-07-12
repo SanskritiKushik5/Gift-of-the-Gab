@@ -24,6 +24,7 @@ const Dashboard = ()  => {
  
   console.log(id)
   useEffect(() => {
+    console.log("load weekstreak")
     loadWeekstreak();
   }, []);
   const loadWeekstreak = async () => {
@@ -56,6 +57,7 @@ const Dashboard = ()  => {
       console.log(week)
       setFinal(week)
   }
+  var seven= moment().subtract('days', 7).format('YYYY-MM-DD')
 
   console.log(final)
   // var seven = moment().subtract('days', 7).format('YYYY-MM-DD')
@@ -65,17 +67,20 @@ const Dashboard = ()  => {
   // console.log(active)
 
   return(<>
+
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
-  <button style={{backgroundColor: final[0]? "#001457" : "#b2ecfd"}} type="button" id="0" className="btn btn-circle btn-xl">Sun</button>
-  <button style={{backgroundColor: final[1]? "#001457" : "#b2ecfd"}} type="button" id="1" className="btn btn-circle btn-xl">Mon</button>
-  <button style={{backgroundColor: final[2]? "#001457" : "#b2ecfd"}} type="button" id="2" className="btn btn-circle btn-xl">Tue</button>
-  <button style={{backgroundColor: final[3]? "#001457" : "#b2ecfd"}} type="button" id="3" className="btn btn-circle btn-xl">Wed</button>
-  <button style={{backgroundColor: final[4]? "#001457" : "#b2ecfd"}} type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
-  <button style={{backgroundColor: final[5]? "#001457" : "#b2ecfd"}} type="button" id="5" className="btn btn-circle btn-xl">Fri</button>
-  <button style={{backgroundColor: final[6]? "#001457" : "#b2ecfd"}} type="button" id="6" className="btn btn-circle btn-xl">Sat</button>
+  <button style={{backgroundColor: final[0]? "#001457" : "#095a9d"}} type="button" id="0" className="btn btn-circle btn-xl">Sun</button>
+  <button style={{backgroundColor: final[1]? "#001457" : "#095a9d"}} type="button" id="1" className="btn btn-circle btn-xl">Mon</button>
+  <button style={{backgroundColor: final[2]? "#001457" : "#095a9d"}} type="button" id="2" className="btn btn-circle btn-xl">Tue</button>
+  <button style={{backgroundColor: final[3]? "#001457" : "#095a9d"}} type="button" id="3" className="btn btn-circle btn-xl">Wed</button>
+  <button style={{backgroundColor: final[4]? "#001457" : "#095a9d"}} type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
+  <button style={{backgroundColor: final[5]? "#001457" : "#095a9d"}} type="button" id="5" className="btn btn-circle btn-xl">Fri</button>
+  <button style={{backgroundColor: final[6]? "#001457" : "#095a9d"}} type="button" id="6" className="btn btn-circle btn-xl">Sat</button>
+  
 </center>
+
 <div className="card">
 <Row>
 <Col>
