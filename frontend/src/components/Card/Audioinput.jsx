@@ -93,11 +93,29 @@ function Audioinput({customer}) {
     var aud = localStorage.getItem('audio')
     console.log(aud)
 
-    await axios.post('http://127.0.0.1:8000/api/audiodata/', {
-      input_audio: `http://127.0.0.1:8000${card.audio}`,
-      output_audio: aud,
-      customer: customer,
-      card_id: id,
+    // const formData = new FormData();
+    // formData.append('audio-file', aud);
+
+    // await axios.post('http://127.0.0.1:8000/api/outputaudio/', {
+    //   input_audio: `http://127.0.0.1:8000${card.audio}`,
+    //   output_audio: formData,
+    //   customer: customer,
+    //   card_id: id,
+    // });
+
+    var mp3fromblob = new File([aud], "incomingaudioclip.mp3");
+    console.log(mp3fromblob, typeof(mp3fromblob))
+
+    // fetch({
+    //   method: 'post',
+    //   url: 'http://127.0.0.1:8000/api/outputaudio/',
+    //   data: {
+    //     output: mp3fromblob
+    //   }
+    // })
+
+    await axios.post('http://127.0.0.1:8000/api/outputaudio/', {
+      output: 'incomingaudioclip.mp3'
     });
 
     var bool = true

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import CardAPIView, HistoryAPIView, CardDetailsAPIView, CountAPIView, CountAddAPIView, ContactAPIView, HistoryDetailsAPIView, WeekStreakAPIView, AudioDataAPIView, WeekStreakDetailsAPIView
+from .views import CardAPIView, HistoryAPIView, CardDetailsAPIView, CountAPIView, CountAddAPIView, ContactAPIView, HistoryDetailsAPIView, WeekStreakAPIView, AudioDataAPIView, WeekStreakDetailsAPIView, OutputAudioAPIView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -17,5 +17,6 @@ urlpatterns = [
     path("api/count_add/", CountAddAPIView.as_view(), name="count"),
     path("api/contact/", ContactAPIView.as_view(), name="contact"),
     path("api/audiodata/", AudioDataAPIView.as_view(), name="audio_data"),
+    path("api/outputaudio/", OutputAudioAPIView.as_view(), name="output_audio"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

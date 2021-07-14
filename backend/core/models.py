@@ -49,6 +49,8 @@ class Weekstreak(models.Model):
 class AudioData(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     input_audio = models.URLField(max_length=500, default="")
-    output_audio = models.TextField(max_length=1500, default="")
+    output_audio = models.FileField(upload_to="output/audio", default="")
     card_id = models.IntegerField(default=0)
 
+class OutputAudio(models.Model):
+    output = models.FileField(upload_to="outputaud/audio", default="")
