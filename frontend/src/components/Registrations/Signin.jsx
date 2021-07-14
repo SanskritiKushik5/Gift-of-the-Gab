@@ -59,10 +59,6 @@ const Signin = () => {
                             <Form.Label>Password</Form.Label>
                             <Form.Control onChange={e => onInputChange(e)} value={post.password} name="password" type="password" placeholder="Password" />
                         </Form.Group>
-                    
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Always remember me" />
-                        </Form.Group>
 
                         <center> 
                             <Button className="submitbtn" type="submit">Log In</Button>
