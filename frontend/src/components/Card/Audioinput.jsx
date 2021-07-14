@@ -9,7 +9,7 @@ import swal from 'sweetalert';
 
 var x = 0;
 function Audioinput({customer}) {
-var arr;
+
   window.scrollTo(0, 0)
 
   const [percentage, setPercentage] = useState(0)
@@ -88,30 +88,34 @@ var arr;
     });
   }
 
-
   const onSubmit = async (e) => {
 		e.preventDefault();
     //var aud = localStorage.getItem('audio')
-    /*console.log(aud)*/
+    //console.log(aud)
 
-    //t formData = new FormData();
-    //formData.append('audio-file', //aud);
-    /*let fileReader = new FileReader();
-    let arrayBuffer;
- 
+    // const formData = new FormData();
+    // formData.append('audio-file', aud);
 
-    fileReader.onloadend = () => {
-    arrayBuffer = fileReader.result;
-    }
-
-   arr=fileReader.readAsArrayBuffer(aud);
-   console.log(arr)*/
-
-    //await axios.post('http://127.0.0.1:8000/api/audiodata/', {
-      //input_audio: `http://127.0.0.1:8000${card.audio}`,
-      //output_audio: aud,
+    // await axios.post('http://127.0.0.1:8000/api/outputaudio/', {
+    //   input_audio: `http://127.0.0.1:8000${card.audio}`,
+    //   output_audio: formData,
     //   customer: customer,
     //   card_id: id,
+    // });
+
+    // var mp3fromblob = new File([aud], "incomingaudioclip.mp3");
+    // console.log(mp3fromblob.mp3, typeof(mp3fromblob))
+
+    // fetch({
+    //   method: 'post',
+    //   url: 'http://127.0.0.1:8000/api/outputaudio/',
+    //   data: {
+    //     output: mp3fromblob
+    //   }
+    // })
+
+    // await axios.post('http://127.0.0.1:8000/api/outputaudio/', {
+    //   output: 'incomingaudioclip.mp3'
     // });
 
     var bool = true
@@ -127,13 +131,6 @@ var arr;
       customer: customer,
       card_id: id,
     });
-
-    // await axios.post('http://127.0.0.1:8000/api/audiodata/', {
-    //   input_audio:card.audio,
-    //   //output_audio:,
-    //   customer: customer,
-    //   card_id: id,
-    // });
 
     loadCount();
     swal({
