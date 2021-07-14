@@ -85,7 +85,7 @@ function App() {
           </Route>
           <Route exact path="/signin">
             <Header details={details} />
-            <Signin details={details} />
+            <Signin />
             <Footer />
           </Route>
           <Route exact path="/userprofile/:id">

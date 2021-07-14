@@ -38,6 +38,10 @@ const History = () => {
       }
     });
 
+    console.log(fhistory)
+    var fhistory_reversed = fhistory.reverse()
+    console.log(fhistory_reversed)
+
     return (
         <div>
             <div className="row head-bg">
