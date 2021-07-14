@@ -19,8 +19,7 @@ const Dashboard = ()  => {
   var active = false
   var today = new Date();
   var fday = today.getDay();
-  const ftoday = JSON.stringify(today).slice(1,11);
-  console.log("Date", ftoday, "Day", fday)
+  const data = new Set();
  
   console.log(id)
   useEffect(() => {
@@ -30,41 +29,28 @@ const Dashboard = ()  => {
   const loadWeekstreak = async () => {
     const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak/${id}`);
     streak = result.data;
-    
-      for(let i=0; i<=fday; i++){
-        console.log(i)
-        console.log("hey entered the for")
-        var wdate = moment().subtract('days', fday-i).format('YYYY-MM-DD');
-        console.log(wdate)
-        console.log(streak)
-          streak.forEach(function(item) {
-            item.date_time = item.date_time.slice(0,10)
-              if (item.date_time === wdate) {
-                console.log("hey we entered the if")
-                // setActive(true);
-                active=true
-                week[i] = active;
-                console.log("i ",i,"active ",active,"week ",week)
-                return;
-              }
-              else{
-                // setActive(false);
-                active=false
-              }
-            });
-          // week[i] = active;
-        }
-      console.log(week)
-      setFinal(week)
-  }
-  var seven= moment().subtract('days', 7).format('YYYY-MM-DD')
+    console.log(streak)
+    streak.forEach(function(item){
+      item.date_time = item.date_time.slice(0,10)
+      data.add(item.date_time)
+    })
+    console.log(data)
 
-  console.log(final)
-  // var seven = moment().subtract('days', 7).format('YYYY-MM-DD')
-  // console.log(seven)
-  // week[fday] = active;
-  // console.log(week)
-  // console.log(active)
+    for(let i=0; i<=fday; i++){  
+      var itr_date = moment().subtract('days', fday-i).format('YYYY-MM-DD');
+      if(data.has(itr_date)){
+        active = true
+        week[i]=active;
+      }
+      else{
+        active=false
+        week[i]=active;
+      }
+      console.log(week)
+    }
+    setFinal(week)
+    console.log(final)
+  }
 
   return(<>
 
