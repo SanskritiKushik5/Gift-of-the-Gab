@@ -114,9 +114,9 @@ function Audioinput({customer}) {
     //   }
     // })
 
-    await axios.post('http://127.0.0.1:8000/api/outputaudio/', {
-      output: 'incomingaudioclip.mp3'
-    });
+    // await axios.post('http://127.0.0.1:8000/api/outputaudio/', {
+    //   output: 'incomingaudioclip.mp3'
+    // });
 
     var bool = true
     await axios.post('http://127.0.0.1:8000/api/weekstreak/', {
