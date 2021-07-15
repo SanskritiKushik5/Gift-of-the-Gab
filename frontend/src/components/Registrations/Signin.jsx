@@ -65,6 +65,13 @@ const Signin = ({details}) => {
                                 </LinkContainer>
                         </Form.Text>
                     </Form.Group>
+                    <Form.Group controlId="formBasicSignin">
+                            <Form.Text className="signin">
+                                <LinkContainer to="/">
+                                    <Nav.Link className="link-signup"><center>Forget Password?</center></Nav.Link>
+                                </LinkContainer>
+                        </Form.Text>
+                    </Form.Group>
                 </Form>
             </Container>
         </Container>
