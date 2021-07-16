@@ -19,6 +19,7 @@ const Header = ({details}) => {
         history.push('/signin');
         console.log("history pushed")
     }
+    //console.log(details)
     // var active = details.is_active
     if(details.is_active){
         

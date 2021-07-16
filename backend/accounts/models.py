@@ -6,3 +6,4 @@ class Customer(AbstractUser):
     date_of_birth = models.DateField(null=True, blank=True)
 
 
+
