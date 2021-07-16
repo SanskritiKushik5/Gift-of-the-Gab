@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
+:root{
+  --display: none;
+}
+
+/* [data-theme="post"]{
+  --display: show;
+} */
+
+.post{
+  display: var(--display);
+}
+
 .navbar {
   background-color: #001457 !important;
 }
