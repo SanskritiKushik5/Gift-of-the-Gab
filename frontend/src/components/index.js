@@ -12,4 +12,3 @@ export { default as Footer } from './Footer/Footer';
 export { default as UserProfile } from './UserProfile/UserProfile';
 export { default as ScrollToTop } from './Scrolltotop/ScrollToTop';
 export { default as Refresh } from './Refresh/Refresh';
-export { default as ForgetPassword } from './Registrations/ForgetPassword';

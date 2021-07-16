@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop, Refresh, Dashboard, UserProfile, ForgetPassword} from './components';
+import { Header, Welcome, Contact, Review, History, Practice, Audioinput, Signup, Signin, Footer, ScrollToTop, Refresh, Dashboard, UserProfile} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from "axios";
 // import { tokenConfig } from "./auth";
@@ -95,7 +95,6 @@ function App() {
           </Route>
           <Route exact path="/forgetpassword">
             <Header details={details}/>
-            <ForgetPassword details={details}/>
             <Footer />
           </Route>
           </Refresh>
