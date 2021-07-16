@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import "./Signup.css";
 import axios from 'axios';
 
-const Signin = ({details}) => {
+const Signin = () => {
 
     let history = useHistory();
 
@@ -30,6 +30,13 @@ const Signin = ({details}) => {
             username:'',
             password:''
         })
+        const accessToken = String(localStorage.getItem('access'));
+        const result = await axios.get("http://127.0.0.1:8000/api/current_user/", 
+            {headers: {
+                "Authorization": `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            }});
+        var details = result.data;
         history.push(`/dashboard/${details.id}`);
 	}
 
