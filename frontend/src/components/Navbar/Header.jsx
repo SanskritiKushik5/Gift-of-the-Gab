@@ -9,6 +9,7 @@ import { useHistory } from "react-router-dom";
 // import CheckAuth from '../CheckAuth/CheckAuth'
 
 const Header = ({details}) => {
+    var refresh_token=localStorage.getItem('refresh')
     const [seed, setSeed] = useState('');
     const history = useHistory();
     useEffect(() => {
@@ -17,10 +18,17 @@ const Header = ({details}) => {
     const logout = async() => {
         await axios.post("http://127.0.0.1:8000/api/logout/");
         history.push('/signin');
-        console.log("history pushed")
+        console.log("history pushed");
+        localStorage.removeItem("refresh");
+        
     }
+    const remove = () => {
+        
+    }
+    console.log(refresh_token)
+    //console.log(details)
     // var active = details.is_active
-    if(details.is_active){
+    if(refresh_token!=null){
         
 return (
         <>

@@ -1,8 +1,7 @@
 import React from "react";
 import Card from "./Card";
 
-const Practice=({cards})  => {
-
+const Practice=({cards, details})  => {
   window.scrollTo(0, 0)
     return(
     <div className="my-5">
@@ -13,7 +12,7 @@ const Practice=({cards})  => {
           <div className="col-10 mx-auto">
             <div className='row gy-2'>
               {cards.map((card)=>(
-                <Card card={card}/>
+                <Card card={card} details={details}/>
               ))}
             </div>
           </div>
