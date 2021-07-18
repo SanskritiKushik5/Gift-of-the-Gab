@@ -16,13 +16,10 @@ const Header = ({details}) => {
         setSeed(Math.floor(Math.random() * 50) );
     });
     const logout = async() => {
+        localStorage.removeItem("refresh");
         await axios.post("http://127.0.0.1:8000/api/logout/");
         history.push('/signin');
         console.log("history pushed")
-        
-    }
-    const remove = () => {
-        localStorage.removeItem("refresh");
     }
     console.log(refresh_token)
     //console.log(details)
@@ -57,7 +54,7 @@ return (
                                 <div class="dropdown-content">
                                 
                                     <a href={`/userprofile/${details.id}`} className="dd">Profile</a>
-                                    <a href="/" className="dd" onClick={remove}>Logout</a>
+                                    <a href="/" className="dd" onClick={logout}>Logout</a>
                                 </div>
                         </div>
                     </Nav>
