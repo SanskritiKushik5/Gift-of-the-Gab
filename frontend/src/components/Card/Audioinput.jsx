@@ -90,8 +90,8 @@ function Audioinput({customer}) {
 
   const onSubmit = async (e) => {
 		e.preventDefault();
-    var aud = localStorage.getItem('audio')
-    console.log(aud)
+    //var aud = localStorage.getItem('audio')
+    //console.log(aud)
 
     // const formData = new FormData();
     // formData.append('audio-file', aud);
@@ -103,8 +103,8 @@ function Audioinput({customer}) {
     //   card_id: id,
     // });
 
-    var mp3fromblob = new File([aud], "incomingaudioclip.mp3");
-    console.log(mp3fromblob, typeof(mp3fromblob))
+    // var mp3fromblob = new File([aud], "incomingaudioclip.mp3");
+    // console.log(mp3fromblob.mp3, typeof(mp3fromblob))
 
     // fetch({
     //   method: 'post',

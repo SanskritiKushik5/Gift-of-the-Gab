@@ -102,10 +102,6 @@ const Signup = () => {
                                 <Form.Label>Enter the password again</Form.Label>
                                 <Form.Control onChange={e => onInputChange(e)} value={post.password2} name="password2" type="password" placeholder="Confirm your password" />
                             </Form.Group>
-                        
-                            <Form.Group controlId="formBasicCheckbox">
-                                <Form.Check type="checkbox" label="Always remember me" />
-                            </Form.Group>
 
                             <center> 
                                 <Button className="submitbtn" type="submit">Submit</Button>
