@@ -15,12 +15,13 @@ const Header = ({details}) => {
     useEffect(() => {
         setSeed(Math.floor(Math.random() * 50) );
     });
-    const pinky = async () => {
+    const logout = async() => {
         localStorage.removeItem("refresh");
         await axios.post("http://127.0.0.1:8000/api/logout/");
-        
         history.push('/signin');
+        console.log("history pushed")
     }
+    console.log(refresh_token)
     //console.log(details)
     // var active = details.is_active
     if(refresh_token!=null){
@@ -53,7 +54,7 @@ return (
                                 <div class="dropdown-content">
                                 
                                     <a href={`/userprofile/${details.id}`} className="dd">Profile</a>
-                                    <a href="/" className="dd" onClick={pinky}>Logout</a>
+                                    <a href="/" className="dd" onClick={logout}>Logout</a>
                                 </div>
                         </div>
                     </Nav>
