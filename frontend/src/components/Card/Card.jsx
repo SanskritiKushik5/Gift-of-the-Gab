@@ -5,7 +5,8 @@ import "./Card.css";
 import { LinkContainer } from "react-router-bootstrap";
 
 const Card=({card, details})  => {
-  if(details.is_active)
+  var refresh_token=localStorage.getItem('refresh')
+  if(refresh_token!=null)
   {
     return(<>
           <div className="col-md-4 col-10 mx-auto container">

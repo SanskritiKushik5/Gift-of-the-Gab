@@ -58,3 +58,4 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             return user
         else:
             raise serializers.ValidationError({"error": "Both passwords do not match!"})
+
