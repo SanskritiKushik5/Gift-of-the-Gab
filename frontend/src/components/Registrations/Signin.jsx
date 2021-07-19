@@ -23,8 +23,11 @@ const Signin = () => {
 		await axios.post('http://127.0.0.1:8000/api/login/', post)
         .then(response => {
             const auth_token = response.data["access"]; // get auth_token
+            const refresh_token = response.data["refresh"];
             localStorage.setItem('access', auth_token);    // set token in axios header
+            localStorage.setItem('refresh', refresh_token)
             console.log(localStorage.getItem('access'))
+            console.log(refresh_token)
           });
         setPost({
             username:'',

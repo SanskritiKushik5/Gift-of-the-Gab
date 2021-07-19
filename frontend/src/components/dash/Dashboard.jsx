@@ -104,13 +104,13 @@ const Dashboard = ()  => {
 <div className="CSS">
   <h3>Hey, Welcome back!</h3>
 <center>
-  <button style={{backgroundColor: final[0]? "#001457" : "#095a9d"}} type="button" id="0" className="btn btn-circle btn-xl">Sun</button>
-  <button style={{backgroundColor: final[1]? "#001457" : "#095a9d"}} type="button" id="1" className="btn btn-circle btn-xl">Mon</button>
-  <button style={{backgroundColor: final[2]? "#001457" : "#095a9d"}} type="button" id="2" className="btn btn-circle btn-xl">Tue</button>
-  <button style={{backgroundColor: final[3]? "#001457" : "#095a9d"}} type="button" id="3" className="btn btn-circle btn-xl">Wed</button>
-  <button style={{backgroundColor: final[4]? "#001457" : "#095a9d"}} type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
-  <button style={{backgroundColor: final[5]? "#001457" : "#095a9d"}} type="button" id="5" className="btn btn-circle btn-xl">Fri</button>
-  <button style={{backgroundColor: final[6]? "#001457" : "#095a9d"}} type="button" id="6" className="btn btn-circle btn-xl">Sat</button>
+  <button style={{backgroundColor: final[0]? "#001457" : "#095a9d", color:  final[0]? "#000" : "#fff"}} type="button" id="0" className="btn btn-circle btn-xl">Sun</button>
+  <button style={{backgroundColor: final[1]? "#001457" : "#095a9d", color:  final[1]? "#000" : "#fff"}} type="button" id="1" className="btn btn-circle btn-xl">Mon</button>
+  <button style={{backgroundColor: final[2]? "#001457" : "#095a9d", color:  final[2]? "#000" : "#fff"}} type="button" id="2" className="btn btn-circle btn-xl">Tue</button>
+  <button style={{backgroundColor: final[3]? "#ffff00" : "#095a9d", color:  final[3]? "#000" : "#fff"}} type="button" id="3" className="btn btn-circle btn-xl">Wed</button>
+  <button style={{backgroundColor: final[4]? "#001457" : "#095a9d", color:  final[4]? "#000" : "#fff"}} type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
+  <button style={{backgroundColor: final[5]? "#001457" : "#095a9d", color:  final[5]? "#000" : "#fff"}} type="button" id="5" className="btn btn-circle btn-xl">Fri</button>
+  <button style={{backgroundColor: final[6]? "#001457" : "#095a9d", color:  final[6]? "#000" : "#fff"}} type="button" id="6" className="btn btn-circle btn-xl">Sat</button>
   
 </center>
 
