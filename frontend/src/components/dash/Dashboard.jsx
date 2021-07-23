@@ -139,6 +139,9 @@ const Dashboard = ()  => {
     console.log(phonetics, phtext, prose, prtext)
   }
 
+
+
+
   const loadWeekstreak = async () => {
     const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak/${id}`);
     streak = result.data;
