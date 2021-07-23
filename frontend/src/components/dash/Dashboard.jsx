@@ -1,9 +1,10 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
 import "./Dashboard.css";
-import ProgressBar from 'react-bootstrap/ProgressBar'
+import { LinkContainer } from "react-router-bootstrap";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Button } from "react-bootstrap";
 import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -16,16 +17,128 @@ const Dashboard = ()  => {
   var week = {};
   // const [active, setActive] = useState(false);
   const [final, setFinal] = useState({});
+  let history = [];
+  const [phonetics, setPhonetics] = useState();
+  const [phtext, setPhtext] = useState();
+  const [prose, setProse] = useState();
+  const [prtext, setPrtext] = useState();
+  const [poetry, setPoetry] = useState();
+  const [potext, setPotext] = useState();
+
   var active = false
   var today = new Date();
   var fday = today.getDay();
   const data = new Set();
+  const card_array = [];
  
   console.log(id)
   useEffect(() => {
     console.log("load weekstreak")
     loadWeekstreak();
+    loadHistory();
   }, []);
+
+  const loadHistory = async () => {
+    const result = await axios.get(`http://127.0.0.1:8000/api/history/${id}`);
+    history = result.data;
+    var i=0;
+    console.log('blah')
+    console.log(history)
+    history.forEach(function(item){
+      card_array[i] = item.card_id;
+      i++;
+    })
+    console.log(card_array)
+    if(card_array.includes(6)){
+      if(card_array.includes(7)){
+        if(card_array.includes(8)){
+          setPhtext('Practice Again')
+        }
+        else{
+          setPhtext('View Next')
+          setPhonetics(8)
+          console.log("hey am 8")
+        }
+      }
+      else{
+        setPhtext('View Next')
+        setPhonetics(7)
+        console.log("hey am 7")
+      }
+    }
+    else{
+      setPhtext('View Next')
+      setPhonetics(6)
+      console.log("hey am 6")
+    }
+    if(card_array.includes(9)){
+      if(card_array.includes(10)){
+        if(card_array.includes(11)){
+          if(card_array.includes(12)){
+            if(card_array.includes(13)){
+              if(card_array.includes(14)){
+                setPotext('Practice Again')
+              }
+              else{
+                setPotext('View Next')
+                setPoetry(14)
+                console.log("hey am 14")
+              }
+            }
+            else{
+              setPotext('View Next')
+              setPoetry(13)
+              console.log("hey am 13")
+            }
+          }
+          else{
+            setPotext('View Next')
+            setPoetry(12)
+            console.log("hey am 12")
+          }
+        }
+        else{
+          setPotext('View Next')
+          setPoetry(11)
+          console.log("hey am 11")
+        }
+      }
+      else{
+        setPotext('View Next')
+        setPoetry(10)
+        console.log("hey am 10")
+      }
+    }
+    else{
+      setPotext('View Next')
+      setPoetry(9)
+      console.log("hey am 9")
+    }
+    if(card_array.includes(15)){
+      if(card_array.includes(16)){
+        if(card_array.includes(17)){
+          setPrtext('Practice Again')
+        }
+        else{
+          setPrtext('View Next')
+          setProse(17)
+          console.log("hey am 17")
+        }
+      }
+      else{
+        setPrtext('View Next')
+        setProse(16)
+        console.log("hey am 16")
+      }
+    }
+    else{
+      setPrtext('View Next')
+      setProse(15)
+      console.log("hey am 15")
+    }
+    console.log(phonetics, phtext, prose, prtext)
+  }
+
   const loadWeekstreak = async () => {
     const result = await axios.get(`http://127.0.0.1:8000/api/weekstreak/${id}`);
     streak = result.data;
@@ -52,6 +165,8 @@ const Dashboard = ()  => {
     console.log(final)
   }
 
+  console.log(history)
+  console.log(phonetics, phtext)
   return(<>
 
 <div className="CSS">
@@ -64,7 +179,6 @@ const Dashboard = ()  => {
   <button style={{backgroundColor: final[4]? "#ffff00" : "#095a9d", color:  final[4]? "#000" : "#fff"}} type="button" id="4" className="btn btn-circle btn-xl">Thu</button>
   <button style={{backgroundColor: final[5]? "#ffff00" : "#095a9d", color:  final[5]? "#000" : "#fff"}} type="button" id="5" className="btn btn-circle btn-xl">Fri</button>
   <button style={{backgroundColor: final[6]? "#ffff00" : "#095a9d", color:  final[6]? "#000" : "#fff"}} type="button" id="6" className="btn btn-circle btn-xl">Sat</button>
-  
 </center>
 
 <div className="card">
@@ -72,25 +186,11 @@ const Dashboard = ()  => {
 <Col>
 <Card>
   <Card.Body>
-    <Card.Title>Pronounciation</Card.Title>
-    <Card.Text>
-    <ProgressBar animated now={45} />
-    </Card.Text>
-    <br></br>
-    <Card.Link href="#">View Next</Card.Link>
-  </Card.Body>
-</Card>
-</Col>
-
-<Col>
-<Card>
-  <Card.Body>
     <Card.Title>Phonetics</Card.Title>
-    <Card.Text>
-    <ProgressBar animated now={20} />
-    </Card.Text>
     <br></br>
-    <Card.Link href="#">View Next</Card.Link>
+    <LinkContainer to={`/audioinput/${phonetics}`}>
+        <Button className="btn">{phtext}</Button>
+    </LinkContainer>
   </Card.Body>
 </Card>
 </Col>
@@ -98,12 +198,23 @@ const Dashboard = ()  => {
 <Col>
 <Card>
   <Card.Body>
-    <Card.Title>Recitation</Card.Title>
-    <Card.Text>
-    <ProgressBar animated now={80} />
-    </Card.Text>
+    <Card.Title>Recitation Poetry</Card.Title>
     <br></br>
-    <Card.Link href="#">View Next</Card.Link>
+    <LinkContainer to={`/audioinput/${poetry}`}>
+        <Button className="btn">{potext}</Button>
+    </LinkContainer>
+  </Card.Body>
+</Card>
+</Col>
+
+<Col>
+<Card>
+  <Card.Body>
+    <Card.Title>Recitation Prose</Card.Title>
+    <br></br>
+    <LinkContainer to={`/audioinput/${prose}`}>
+        <Button className="btn">{prtext}</Button>
+    </LinkContainer>
   </Card.Body>
 </Card>
 </Col>
@@ -116,4 +227,3 @@ const Dashboard = ()  => {
 
 
 export default Dashboard;
-
