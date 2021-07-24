@@ -20,13 +20,16 @@ const Dashboard = ()  => {
   let history = [];
   const [phonetics, setPhonetics] = useState();
   const [phtext, setPhtext] = useState();
+  const [prose, setProse] = useState();
+  const [prtext, setPrtext] = useState();
+  const [poetry, setPoetry] = useState();
+  const [potext, setPotext] = useState();
 
   var active = false
   var today = new Date();
   var fday = today.getDay();
   const data = new Set();
   const card_array = [];
-  var poetry, potext, prose, prtext;
  
   console.log(id)
   useEffect(() => {
@@ -68,7 +71,72 @@ const Dashboard = ()  => {
       setPhonetics(6)
       console.log("hey am 6")
     }
-    console.log(phonetics, phtext)
+    if(card_array.includes(9)){
+      if(card_array.includes(10)){
+        if(card_array.includes(11)){
+          if(card_array.includes(12)){
+            if(card_array.includes(13)){
+              if(card_array.includes(14)){
+                setPotext('Practice Again')
+              }
+              else{
+                setPotext('View Next')
+                setPoetry(14)
+                console.log("hey am 14")
+              }
+            }
+            else{
+              setPotext('View Next')
+              setPoetry(13)
+              console.log("hey am 13")
+            }
+          }
+          else{
+            setPotext('View Next')
+            setPoetry(12)
+            console.log("hey am 12")
+          }
+        }
+        else{
+          setPotext('View Next')
+          setPoetry(11)
+          console.log("hey am 11")
+        }
+      }
+      else{
+        setPotext('View Next')
+        setPoetry(10)
+        console.log("hey am 10")
+      }
+    }
+    else{
+      setPotext('View Next')
+      setPoetry(9)
+      console.log("hey am 9")
+    }
+    if(card_array.includes(15)){
+      if(card_array.includes(16)){
+        if(card_array.includes(17)){
+          setPrtext('Practice Again')
+        }
+        else{
+          setPrtext('View Next')
+          setProse(17)
+          console.log("hey am 17")
+        }
+      }
+      else{
+        setPrtext('View Next')
+        setProse(16)
+        console.log("hey am 16")
+      }
+    }
+    else{
+      setPrtext('View Next')
+      setProse(15)
+      console.log("hey am 15")
+    }
+    console.log(phonetics, phtext, prose, prtext)
   }
 
   const loadWeekstreak = async () => {
@@ -132,8 +200,8 @@ const Dashboard = ()  => {
   <Card.Body>
     <Card.Title>Recitation Poetry</Card.Title>
     <br></br>
-    <LinkContainer to={`/audioinput/${history.card_id}`}>
-        <Button className="btn">View Next</Button>
+    <LinkContainer to={`/audioinput/${poetry}`}>
+        <Button className="btn">{potext}</Button>
     </LinkContainer>
   </Card.Body>
 </Card>
@@ -144,8 +212,8 @@ const Dashboard = ()  => {
   <Card.Body>
     <Card.Title>Recitation Prose</Card.Title>
     <br></br>
-    <LinkContainer to={`/audioinput/${history.card_id}`}>
-        <Button className="btn">View Next</Button>
+    <LinkContainer to={`/audioinput/${prose}`}>
+        <Button className="btn">{prtext}</Button>
     </LinkContainer>
   </Card.Body>
 </Card>
