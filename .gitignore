@@ -3,4 +3,6 @@ node_modules
 env/
 frontend/package-lock.json
 package.json
+__pycache__/
+*.py[cod]
 *.pyc

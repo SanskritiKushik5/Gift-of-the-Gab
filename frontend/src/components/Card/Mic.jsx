@@ -52,6 +52,9 @@ class Mic extends React.Component {
     var fileReader = new FileReader();
     fileReader.onload = function(event) {
     arrayBuffer = event.target.result;
+    console.log(arrayBuffer, typeof(arrayBuffer));
+    var arr = [1, 2, 3];
+    console.log(arr, typeof(arr));
   };
     var FR=fileReader.readAsArrayBuffer(aud);
     console.log('Filereader',fileReader)
