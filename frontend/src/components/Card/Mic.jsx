@@ -38,28 +38,7 @@ class Mic extends React.Component {
     console.log('onStop: audio data', data)
     console.log(data, data.blob)
     const aud = data.blob
-    //var blobarray = aud.arrayBuffer();
-    // console.log(blobarray)
-    // console.log('Blob type',typeof(blobarray))
-    //localStorage.setItem('audio',aud)
-    //console.log('type of data blob',typeof(data.blob),data.blob)
-    //aud.arrayBuffer().then(blobarray => console.log('blobarray',blobarray))//audio processing in then function
-    //console.log('Type of arraybuffer',typeof(array_buffer))
-    //console.log('Array_buffer',array_buffer)
-    console.log('Blob type',typeof(aud))
-    //Alternative option
-    var arrayBuffer;
-    var fileReader = new FileReader();
-    fileReader.onload = function(event) {
-    arrayBuffer = event.target.result;
-    console.log(arrayBuffer, typeof(arrayBuffer));
-    var arr = [1, 2, 3];
-    console.log(arr, typeof(arr));
-  };
-    var FR=fileReader.readAsArrayBuffer(aud);
-    console.log('Filereader',fileReader)
-    console.log('Typeoffilereader',typeof(FR))
-    
+    console.log('Blob type', typeof(aud))
   }
 
   render() {

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import Slider from './Slider'
 import ControlPanel from '../Controls/ControlPanel'
 import Mic from './Mic'
+import Audioresult from './Audioresult'
 import {Col, Row, Card, Button, Form} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -17,10 +18,6 @@ function Audioinput({customer}) {
   const [duration, setDuration] = useState(0)
   const [currentTime, setCurrentTime] = useState(0)
   const [card, setCard] = useState({});
-  // const [count, setCount] = useState({
-  //   count: 1,
-  //   customer: customer,
-  // })
   const { id } = useParams();
   const audioRef = useRef()
   const onChange = (e) => {
@@ -66,10 +63,6 @@ function Audioinput({customer}) {
   }
   const putCount = async (x) => {
     console.log(customer)
-    // setCount({
-    //   count: x,
-    //   customer: customer,
-    // })
     await axios.put(`http://127.0.0.1:8000/api/count/${customer}/`, {
       count: x,
       customer: customer
@@ -90,33 +83,6 @@ function Audioinput({customer}) {
 
   const onSubmit = async (e) => {
 		e.preventDefault();
-    //var aud = localStorage.getItem('audio')
-    //console.log(aud)
-
-    // const formData = new FormData();
-    // formData.append('audio-file', aud);
-
-    // await axios.post('http://127.0.0.1:8000/api/outputaudio/', {
-    //   input_audio: `http://127.0.0.1:8000${card.audio}`,
-    //   output_audio: formData,
-    //   customer: customer,
-    //   card_id: id,
-    // });
-
-    // var mp3fromblob = new File([aud], "incomingaudioclip.mp3");
-    // console.log(mp3fromblob.mp3, typeof(mp3fromblob))
-
-    // fetch({
-    //   method: 'post',
-    //   url: 'http://127.0.0.1:8000/api/outputaudio/',
-    //   data: {
-    //     output: mp3fromblob
-    //   }
-    // })
-
-    // await axios.post('http://127.0.0.1:8000/api/outputaudio/', {
-    //   output: 'incomingaudioclip.mp3'
-    // });
 
     var bool = true
     await axios.post('http://127.0.0.1:8000/api/weekstreak/', {
@@ -139,6 +105,7 @@ function Audioinput({customer}) {
       icon: "success",
     });
 	}
+
   return (
     <>
     <div className='app-container'>
