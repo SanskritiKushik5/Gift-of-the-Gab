@@ -8,8 +8,8 @@ const Hcard = ({ history }) => {
     return (
         <div>
             <Card>
-                <Row className='no-gutters'>
-                    <Col md={5} lg={5}  >
+                <Row>
+                    <Col lg={5} sm={12}>
                         <Card.Img className="hcardImg" src={history.thumbnail} />
                     </Col>
                     <Col>

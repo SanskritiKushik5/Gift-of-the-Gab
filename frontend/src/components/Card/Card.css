@@ -30,3 +30,21 @@ pre{
     font-family: Helvetica, Arial, sans-serif;
     font-size: medium;
 }
+
+@media screen and (max-width: 767px){
+    .card-img-top{
+        height: auto;
+        width: auto;
+    }
+
+    .rd_activity{
+        clear: both;
+        text-align: center;
+    }
+
+    .b_activity{
+        clear: both;
+        text-align: center;
+        margin-right: 15px;
+    }
+}

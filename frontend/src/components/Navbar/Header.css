@@ -4,10 +4,6 @@
   --display: none;
 }
 
-/* [data-theme="post"]{
-  --display: show;
-} */
-
 .post{
   display: var(--display);
 }
@@ -48,7 +44,6 @@
 }
 
 .dropdown:hover .dropdown-content {display: block;}
-/* @media (min-width: 992px) { */
   .link {
     margin-left: 1em;
     margin-right: 1em;
@@ -72,8 +67,3 @@
   .contact{
     margin-right: 19em;
   }
-
-  /* .dd{
-    color: #000000;
-    background-color: #b2ecfd;
-  } */
