@@ -45,9 +45,6 @@ const History = () => {
     return (
         <div>
             <div className="row head-bg">
-                {/* <div className="container-fluid order-1 col-6 count-left">
-                    <h1 className="display-2">450 </h1><h3>Total Minutes Spent</h3>
-                </div> */}
                 <div className="container-fluid order-2 col-6 count-right">
                     <h1 className="display-2">{count.count}</h1><h3>Total Exercises Done</h3>
                 </div>

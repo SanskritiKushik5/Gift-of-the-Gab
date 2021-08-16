@@ -16,7 +16,7 @@ const Card = ({ card, details }) => {
 
   if (refresh_token != null) {
     return (<>
-      <div className="col-md-4 col-10 mx-auto container">
+      <div className="col-md-4 col-12 mx-auto container">
         <div class="card" >
           <img src={`http://127.0.0.1:8000${card.thumbnail}`} class="card-img-top" alt="..." />
           <div class="card-body">

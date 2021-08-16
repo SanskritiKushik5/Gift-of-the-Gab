@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-// import CheckAuth from '../CheckAuth/CheckAuth'
 
 const Header = ({ details }) => {
     var refresh_token = localStorage.getItem('refresh')
@@ -22,13 +21,11 @@ const Header = ({ details }) => {
         console.log("history pushed")
     }
     console.log(refresh_token)
-    //console.log(details)
-    // var active = details.is_active
+    
     if (refresh_token != null) {
 
         return (
             <>
-                {/* <CheckAuth /> */}
                 <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
                     <LinkContainer to="/">
                         <Navbar.Brand className="ml-xs-2 app-name">Gift of the Gab</Navbar.Brand>
@@ -66,7 +63,6 @@ const Header = ({ details }) => {
     else {
         return (
             <>
-                {/* <CheckAuth /> */}
                 <Navbar expand="lg" variant="dark" bg="primary" className="navbar">
                     <LinkContainer to="/">
                         <Navbar.Brand className="ml-xs-2 app-name">Gift of the Gab</Navbar.Brand>

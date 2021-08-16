@@ -40,6 +40,6 @@ h3 {
 }
 
 .hcardImg{
-  height: 200px;
-  width: auto;
+  max-width: 300px;
+  height: auto;
 }
