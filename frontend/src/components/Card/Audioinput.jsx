@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from 'react'
 import Slider from './Slider'
 import ControlPanel from '../Controls/ControlPanel'
 import Mic from './Mic'
-import Audioresult from './Audioresult'
 import {Col, Row, Card, Button, Form} from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import axios from "axios";
