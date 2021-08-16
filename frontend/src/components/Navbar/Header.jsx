@@ -45,9 +45,13 @@ const Header = ({ details }) => {
                             <LinkContainer to={`/history/${details.id}`}>
                                 <Nav.Link className="link about-us">History</Nav.Link>
                             </LinkContainer>
+                            <LinkContainer to="/explore">
+                                <Nav.Link className="link">Explore</Nav.Link>
+                            </LinkContainer>
                             <LinkContainer to="/contact">
                                 <Nav.Link className="link contact">Contact</Nav.Link>
                             </LinkContainer>
+
 
                             <div class="dropdown">
                                 <Nav.Link className="link avatar"><Avatar src={`https://avatars.dicebear.com/api/jdenticon/${seed}.svg`} /></Nav.Link>
