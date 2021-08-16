@@ -1,10 +1,10 @@
 import React from 'react'
-import {Col, Row, Card, Button} from 'react-bootstrap';
+import { Col, Row, Card, Button } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 
-const Hcard = ({history}) => {
+const Hcard = ({ history }) => {
     var dt = history.date_time
-    var mdt = dt.slice(0,10) +" "+ dt.slice(11,16)
+    var mdt = dt.slice(0, 10) + " " + dt.slice(11, 16)
     return (
         <div>
             <Card>
@@ -20,7 +20,7 @@ const Hcard = ({history}) => {
                                 <small>{history.description}</small>
                             </Card.Text>
                             <LinkContainer to={`/audioinput/${history.card_id}`}>
-                            <Button className="btn">Practice More</Button>
+                                <Button className="btn">Practice More</Button>
                             </LinkContainer>
                         </Card.Body>
                     </Col>

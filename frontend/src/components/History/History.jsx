@@ -13,29 +13,29 @@ const History = () => {
     useEffect(() => {
         loadHistory();
     }, []);
-    
+
     const loadHistory = async () => {
         const result = await axios.get(`http://127.0.0.1:8000/api/history/${id}`);
         setHistory(result.data);
         const output = await axios.get(`http://127.0.0.1:8000/api/count/${id}`);
         setCount(output.data);
     }
-    
+
     var fhistory = [];
 
-    history.forEach(function(item) {
-      var existing = fhistory.filter(function(v, i) {
-        return v.card_id == item.card_id;
-      });
-      if (existing.length) {
-        var existingIndex = fhistory.indexOf(existing[0]);
-        fhistory[existingIndex].date_time = item.date_time.slice(0,10) +" "+ item.date_time.slice(11,16);
-      } else {
-        if (typeof item.date_time == 'string')
-          item.date_time = [item.date_time];
-          item.date_time = item.date_time.slice(0,10) +" "+ item.date_time.slice(11,16)
-        fhistory.push(item);
-      }
+    history.forEach(function (item) {
+        var existing = fhistory.filter(function (v, i) {
+            return v.card_id == item.card_id;
+        });
+        if (existing.length) {
+            var existingIndex = fhistory.indexOf(existing[0]);
+            fhistory[existingIndex].date_time = item.date_time.slice(0, 10) + " " + item.date_time.slice(11, 16);
+        } else {
+            if (typeof item.date_time == 'string')
+                item.date_time = [item.date_time];
+            item.date_time = item.date_time.slice(0, 10) + " " + item.date_time.slice(11, 16)
+            fhistory.push(item);
+        }
     });
 
     console.log(fhistory)
@@ -56,10 +56,10 @@ const History = () => {
                 <div className="container-fluid">
                     <h2 align="center">Recent Activities</h2>
                     <br></br>
-                    {fhistory.map((history)=>(
-                         <Hcard history={history}/>
+                    {fhistory.map((history) => (
+                        <Hcard history={history} />
                     ))}
-                                        {/* <Card>
+                    {/* <Card>
                                             <Row className='no-gutters'>
                                                 <Col md={5} lg={5}  >
                                                     <Card.Img src={img} />
@@ -261,7 +261,7 @@ const History = () => {
                 </div>
             </div>
         </div>
-    
+
     )
 }
 
