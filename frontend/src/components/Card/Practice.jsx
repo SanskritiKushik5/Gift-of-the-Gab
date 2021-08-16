@@ -1,9 +1,9 @@
 import React from "react";
 import Card from "./Card";
 
-const Practice=({cards, details})  => {
+const Practice = ({ cards, details }) => {
   window.scrollTo(0, 0)
-    return(
+  return (
     <div className="my-5">
       <h3 className="display-6" align="center"><strong>- Exercises -</strong></h3>
       <br />
@@ -11,15 +11,15 @@ const Practice=({cards, details})  => {
         <div className='row'>
           <div className="col-10 mx-auto">
             <div className='row gy-2'>
-              {cards.map((card)=>(
-                <Card card={card} details={details}/>
+              {cards.map((card) => (
+                <Card card={card} details={details} />
               ))}
             </div>
           </div>
         </div>
       </div>
     </div>
-    );
+  );
 };
 
 export default Practice

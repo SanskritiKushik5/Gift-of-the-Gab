@@ -1,5 +1,5 @@
 import React from 'react'
-import {Carousel, Alert, Container} from 'react-bootstrap';
+import { Carousel, Alert, Container } from 'react-bootstrap';
 import "./Review.css"
 
 const Review = () => {
@@ -12,7 +12,7 @@ const Review = () => {
             <p className="car-txt">
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis."
             </p>
-            <hr/>
+            <hr />
             <center>
               <small className="mb-0"> Mrs. Marilyn Swift</small>
               <small className="mb-0">|  ⭐⭐⭐⭐⭐</small>
@@ -24,7 +24,7 @@ const Review = () => {
             <p className="car-txt">
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis."
             </p>
-            <hr/>
+            <hr />
             <center>
               <small className="mb-0"> Mr. Juned Raza</small>
               <small className="mb-0">|  ⭐⭐⭐⭐⭐</small>
@@ -36,7 +36,7 @@ const Review = () => {
             <p className="car-txt">
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tincidunt odio vitae eros hendrerit venenatis."
             </p>
-            <hr/>
+            <hr />
             <center>
               <small className="mb-0">Ms. Sanskriti Kushik</small>
               <small className="mb-0">|  ⭐⭐⭐⭐⭐</small>
