@@ -33,11 +33,11 @@ function ControlPanel({ play, isPlaying, duration, currentTime }) {
 
   return (
     <div className='container col-10'>
-    <div className='control-panel'>
-      <div className='timer'>{secondsToHms(currentTime)}</div>
-      <Button play={play} isPlaying={isPlaying} />
-      <div className='timer'>{secondsToHms(duration)}</div>
-    </div>
+      <div className='control-panel'>
+        <div className='timer'>{secondsToHms(currentTime)}</div>
+        <Button play={play} isPlaying={isPlaying} />
+        <div className='timer'>{secondsToHms(duration)}</div>
+      </div>
     </div>
   )
 }

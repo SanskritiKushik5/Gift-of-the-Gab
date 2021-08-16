@@ -38,7 +38,7 @@ class Mic extends React.Component {
     console.log('onStop: audio data', data)
     console.log(data, data.blob)
     const aud = data.blob
-    console.log('Blob type', typeof(aud))
+    console.log('Blob type', typeof (aud))
   }
 
   render() {
