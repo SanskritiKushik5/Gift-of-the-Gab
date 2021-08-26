@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Container, Form, Col } from 'react-bootstrap';
 import swal from 'sweetalert';
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -31,7 +31,7 @@ const UserProfile = ({ details }) => {
     return (
         <>
             <Container className="form-box flex mt-5">
-                <Container fluid="md">
+                <Container>
                     <Form onSubmit={e => onSubmit(e)}>
                         <Form.Group controlId="username">
                             <Form.Label>Username</Form.Label>

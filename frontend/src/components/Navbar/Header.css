@@ -52,7 +52,7 @@
     margin-left: 1em;
   }
   .ml-1 {
-    margin-left: 3em;
+    margin-left: 12em;
   }
   .app-name {
     font-weight: 500;
@@ -66,4 +66,32 @@
   }
   .contact{
     margin-right: 19em;
+  }
+
+  @media screen and (max-width: 767px){
+    .app-name {
+      font-weight: 500;
+      font-size: xx-large;
+      font-family: 'Dancing Script';
+      margin-left: 0.5em;
+    }
+
+    .link, .contact{
+      margin-left: 1em;
+    }
+
+    .avatar{
+      display: flex;
+      float: left;
+    }
+
+    .ml-1{
+      margin-left: 1em;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .ml-2{
+      margin-left: 1em;
+    }
   }
