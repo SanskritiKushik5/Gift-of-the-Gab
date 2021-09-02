@@ -47,4 +47,9 @@ pre{
         text-align: center;
         margin-right: 15px;
     }
+
+    .exe-img{
+        max-width: 300px;
+        height: auto;
+    }
 }

@@ -36,3 +36,10 @@
 .link-signup{
     font-size: 12px;
 }
+
+@media screen and (max-width: 767px){
+
+    .form-box{
+        width: 20rem;
+    }
+}

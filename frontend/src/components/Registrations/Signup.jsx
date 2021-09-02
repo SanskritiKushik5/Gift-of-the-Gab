@@ -91,7 +91,7 @@ const Signup = () => {
 
                         <Form.Group controlId="date_of_birth">
                             <Form.Label>Date Of Birth</Form.Label>
-                            <Form.Control onChange={e => onInputChange(e)} value={post.date_of_birth} name="date_of_birth" type="date" placeholder="Date of Birth" />
+                            <Form.Control onChange={e => onInputChange(e)} value={post.date_of_birth} placeholder="DD-MM-YYYY" name="date_of_birth" type="date" placeholder="Date of Birth" />
                         </Form.Group>
 
                         <Form.Group controlId="password">
