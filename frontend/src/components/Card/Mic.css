@@ -64,3 +64,18 @@
     margin-bottom: 20px;
     padding: 10px;
 }
+
+@media screen and (max-width: 767px){
+    .mic-rec{
+        max-width: 300px;
+    }
+
+    .audio-rec{
+        left: 0;
+        margin: 0;
+    }
+
+    AudioReactRecorder{
+        width: 300px;
+    }
+}

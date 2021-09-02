@@ -10,8 +10,6 @@ import swal from 'sweetalert';
 var x = 0;
 function Audioinput({customer}) {
 
-  window.scrollTo(0, 0)
-
   const [percentage, setPercentage] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [duration, setDuration] = useState(0)
@@ -49,6 +47,7 @@ function Audioinput({customer}) {
   }
   useEffect(() => {
     loadCard();
+    window.scrollTo(0, 0)
   }, []);
   const loadCard = async () => {
     const result = await axios.get(`http://127.0.0.1:8000/api/card/${id}`);
@@ -99,11 +98,18 @@ function Audioinput({customer}) {
 
     loadCount();
     swal({
-      title: "Submitted Successfully!",
+      title: "You did great! Just a little bit more...",
       text: "Well done! Keep Practicing!",
       icon: "success",
     });
 	}
+
+  var constraints={audio:true};
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then((console.log("Audio")))
+    .catch((err)=>
+      {if(err.name=="NotAllowedError"){alert('Please grant the access for the audio')}
+      });
 
   return (
     <>

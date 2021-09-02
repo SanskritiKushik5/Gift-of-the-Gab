@@ -58,12 +58,12 @@ class Mic extends React.Component {
           </button>
         </div>
         <audio
-          className="container"
+          className="container mic-rec"
           id='audio'
           controls
           src={this.state.audioData ? this.state.audioData.url : null}
         ></audio>
-        <div className="container rec">
+        <div className="rec">
           <AudioReactRecorder
             className="audio-rec"
             type="audio/mpeg"
